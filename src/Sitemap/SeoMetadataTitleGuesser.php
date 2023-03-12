@@ -21,10 +21,7 @@ use Symfony\Cmf\Bundle\SeoBundle\SeoPresentation;
  */
 class SeoMetadataTitleGuesser implements GuesserInterface
 {
-    /**
-     * @var SeoPresentation
-     */
-    private $seoPresentation;
+    private \Symfony\Cmf\Bundle\SeoBundle\SeoPresentation $seoPresentation;
 
     public function __construct(
         SeoPresentation $seoPresentation

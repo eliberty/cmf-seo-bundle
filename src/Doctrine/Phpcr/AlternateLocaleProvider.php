@@ -31,15 +31,9 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 class AlternateLocaleProvider implements AlternateLocaleProviderInterface
 {
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
+    private \Symfony\Component\Routing\Generator\UrlGeneratorInterface $urlGenerator;
 
-    /**
-     * @var ManagerRegistry
-     */
-    private $managerRegistry;
+    private \Doctrine\Common\Persistence\ManagerRegistry $managerRegistry;
 
     /**
      * @param ManagerRegistry       $managerRegistry

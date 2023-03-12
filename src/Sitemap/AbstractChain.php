@@ -20,17 +20,13 @@ abstract class AbstractChain
 {
     /**
      * The list of entries by sitemap name and priority.
-     *
-     * @var array
      */
-    private $items = [];
+    private array $items = [];
 
     /**
      * The list of default entries by priority.
-     *
-     * @var array
      */
-    private $defaultItems = [];
+    private array $defaultItems = [];
 
     /**
      * Add an entry to the chain.
@@ -72,7 +68,7 @@ abstract class AbstractChain
     {
         $priorities = array_keys($this->defaultItems);
         if (isset($this->items[$sitemap])) {
-            $priorities = array_unique(array_merge($priorities, array_keys($this->items[$sitemap])));
+            $priorities = array_unique([...$priorities, ...array_keys($this->items[$sitemap])]);
         }
 
         rsort($priorities);

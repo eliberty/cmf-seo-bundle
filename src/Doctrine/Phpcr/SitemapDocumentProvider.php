@@ -22,10 +22,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Sitemap\LoaderInterface;
  */
 class SitemapDocumentProvider implements LoaderInterface
 {
-    /**
-     * @var DocumentManager
-     */
-    private $manager;
+    private \Doctrine\ODM\PHPCR\DocumentManager $manager;
 
     /**
      * @param DocumentManager $manager

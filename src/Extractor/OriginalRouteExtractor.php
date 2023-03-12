@@ -24,10 +24,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 class OriginalRouteExtractor implements ExtractorInterface
 {
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
+    private \Symfony\Component\Routing\Generator\UrlGeneratorInterface $urlGenerator;
 
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {

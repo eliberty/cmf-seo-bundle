@@ -18,7 +18,7 @@ namespace Symfony\Cmf\Bundle\SeoBundle\Model;
  */
 class AlternateLocale
 {
-    const REL = 'alternate';
+    public const REL = 'alternate';
 
     /**
      * @var string the absolute url for that locale

@@ -30,10 +30,7 @@ class UrlInformation
      */
     private $location;
 
-    /**
-     * @var \DateTime
-     */
-    private $lastModification;
+    private ?string $lastModification = null;
 
     /**
      * @var string one of the official/allowed
@@ -45,10 +42,7 @@ class UrlInformation
      */
     private $priority;
 
-    /**
-     * @var array
-     */
-    private $allowedChangeFrequencies = ['always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never'];
+    private array $allowedChangeFrequencies = ['always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never'];
 
     /**
      * @var string As a string to display the route i.e. in html views.

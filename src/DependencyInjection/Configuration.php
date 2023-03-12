@@ -35,14 +35,11 @@ class Configuration implements ConfigurationInterface
         $nodeBuilder = $treeBuilder->root('cmf_seo')
             ->addDefaultsIfNotSet()
             ->beforeNormalization()
-                ->ifTrue(function ($config) {
-                    return isset($config['sitemap'])
-                        && (!isset($config['sitemap']['configurations'])
-                            || 0 === count($config['sitemap']['configurations'])
-                        )
-                        && !isset($config['sitemap']['configuration']) // xml configuration
-                    ;
-                })
+                ->ifTrue(fn($config) => isset($config['sitemap'])
+                    && (!isset($config['sitemap']['configurations'])
+                        || 0 === (is_countable($config['sitemap']['configurations']) ? count($config['sitemap']['configurations']) : 0)
+                    )
+                    && !isset($config['sitemap']['configuration']))
                 ->then(function ($config) {
                     if (true === $config['sitemap']) {
                         $config['sitemap'] = [
@@ -59,9 +56,7 @@ class Configuration implements ConfigurationInterface
                 })
             ->end()
             ->beforeNormalization()
-                ->ifTrue(function ($config) {
-                    return isset($config['content_key']) && !isset($config['content_listener']['content_key']);
-                })
+                ->ifTrue(fn($config) => isset($config['content_key']) && !isset($config['content_listener']['content_key']))
                 ->then(function ($config) {
                     $config['content_listener']['content_key'] = $config['content_key'];
                     unset($config['content_key']);
@@ -71,9 +66,7 @@ class Configuration implements ConfigurationInterface
             ->end()
             // validation needs to be on top, when no values are set a validation inside the content_listener array node will not be triggered
             ->validate()
-                ->ifTrue(function ($v) {
-                    return $v['content_listener']['enabled'] && empty($v['content_listener']['content_key']);
-                })
+                ->ifTrue(fn($v) => $v['content_listener']['enabled'] && empty($v['content_listener']['content_key']))
                 ->thenInvalid('Configure the content_listener.content_key or disable the content_listener when not using the CmfRoutingBundle DynamicRouter.')
             ->end()
             ->children()
@@ -244,12 +237,8 @@ class Configuration implements ConfigurationInterface
         $node = new ArrayNodeDefinition($type);
         $node
             ->beforeNormalization()
-                ->ifTrue(function ($config) {
-                    return is_string($config);
-                })
-                ->then(function ($config) {
-                    return [$config];
-                })
+                ->ifTrue(fn($config) => is_string($config))
+                ->then(fn($config) => [$config])
             ->end()
             ->defaultValue($default)
             ->prototype('scalar')->end()
@@ -271,7 +260,7 @@ class Configuration implements ConfigurationInterface
                 ->canBeDisabled()
                 ->children()
                     ->scalarNode('content_key')
-                    ->defaultValue(class_exists('Symfony\Cmf\Bundle\RoutingBundle\Routing\DynamicRouter') ? DynamicRouter::CONTENT_KEY : '')
+                    ->defaultValue(class_exists(\Symfony\Cmf\Bundle\RoutingBundle\Routing\DynamicRouter::class) ? DynamicRouter::CONTENT_KEY : '')
                 ->end()
             ->end()
         ;

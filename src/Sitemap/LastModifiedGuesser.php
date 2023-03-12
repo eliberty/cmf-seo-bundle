@@ -25,10 +25,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Model\UrlInformation;
  */
 class LastModifiedGuesser implements GuesserInterface
 {
-    /**
-     * @var ManagerRegistry
-     */
-    private $managerRegistry;
+    private \Doctrine\Common\Persistence\ManagerRegistry $managerRegistry;
 
     /**
      * LastModifiedGuesser constructor.

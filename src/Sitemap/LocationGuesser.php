@@ -23,10 +23,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 class LocationGuesser implements GuesserInterface
 {
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
+    private \Symfony\Component\Routing\Generator\UrlGeneratorInterface $urlGenerator;
 
     public function __construct(UrlGeneratorInterface $router)
     {

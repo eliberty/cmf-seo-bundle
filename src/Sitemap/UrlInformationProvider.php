@@ -23,20 +23,11 @@ use Symfony\Cmf\Bundle\SeoBundle\Model\UrlInformation;
  */
 class UrlInformationProvider
 {
-    /**
-     * @var LoaderChain
-     */
-    private $loader;
+    private \Symfony\Cmf\Bundle\SeoBundle\Sitemap\LoaderChain $loader;
 
-    /**
-     * @var GuesserChain
-     */
-    private $guesser;
+    private \Symfony\Cmf\Bundle\SeoBundle\Sitemap\GuesserChain $guesser;
 
-    /**
-     * @var VoterChain
-     */
-    private $voter;
+    private \Symfony\Cmf\Bundle\SeoBundle\Sitemap\VoterChain $voter;
 
     public function __construct(
         LoaderChain $loader,

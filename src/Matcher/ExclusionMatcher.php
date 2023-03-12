@@ -24,7 +24,7 @@ class ExclusionMatcher implements RequestMatcherInterface
     /**
      * @var RequestMatcherInterface[] a list of rule matchers
      */
-    private $matchersMap = [];
+    private array $matchersMap = [];
 
     /**
      * @param RequestMatcherInterface $ruleMatcher

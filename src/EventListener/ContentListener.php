@@ -27,10 +27,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
  */
 class ContentListener
 {
-    /**
-     * @var SeoPresentationInterface
-     */
-    private $seoPresentation;
+    private \Symfony\Cmf\Bundle\SeoBundle\SeoPresentationInterface $seoPresentation;
 
     /**
      * @var string The key to look up the content in the request attributes
@@ -78,9 +75,7 @@ class ContentListener
     protected function canBeRedirected(Request $request, RedirectResponse $response)
     {
         $targetRequest = Request::create($response->getTargetUrl());
-        $stripUrl = function ($path) {
-            return preg_replace('/#.+$/', '', $path);
-        };
+        $stripUrl = fn($path) => preg_replace('/#.+$/', '', $path);
         $targetPath = $stripUrl($targetRequest->getBaseUrl().$targetRequest->getPathInfo());
         $currentPath = $stripUrl($request->getBaseUrl().$request->getPathInfo());
 

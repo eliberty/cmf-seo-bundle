@@ -36,29 +36,20 @@ class SeoMetadata implements SeoMetadataInterface
      * Depending on the setting for the cmf_seo.original_route_pattern, it
      * will do a redirect to this url or create a canonical link with this
      * value as the href attribute.
-     *
-     * @var string
      */
-    private $originalUrl;
+    private ?string $originalUrl = null;
 
     /**
      * If this string is set, it will be inserted as a meta tag for the page description.
-     *
-     * @var string
      */
-    private $metaDescription;
+    private ?string $metaDescription = null;
 
     /**
      * This comma separated list will contain the keywords for the page's meta information.
-     *
-     * @var string
      */
-    private $metaKeywords;
+    private ?string $metaKeywords = null;
 
-    /**
-     * @var string
-     */
-    private $title;
+    private ?string $title = null;
 
     /**
      * To store meta tags for type property.

@@ -23,10 +23,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Model\UrlInformation;
  */
 class DepthGuesser implements GuesserInterface
 {
-    /**
-     * @var ManagerRegistry
-     */
-    private $managerRegistry;
+    private \Doctrine\Bundle\PHPCRBundle\ManagerRegistry $managerRegistry;
 
     /**
      * @var int the depth of the content base path as the depth offset

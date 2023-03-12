@@ -22,10 +22,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
  */
 class PublishWorkflowVoter implements VoterInterface
 {
-    /**
-     * @var AuthorizationCheckerInterface
-     */
-    private $publishWorkflowChecker;
+    private \Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface $publishWorkflowChecker;
 
     public function __construct(AuthorizationCheckerInterface $publishWorkflowChecker)
     {

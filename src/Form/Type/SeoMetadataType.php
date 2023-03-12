@@ -30,10 +30,7 @@ class SeoMetadataType extends AbstractType
      */
     private $dataClass;
 
-    /**
-     * @var array
-     */
-    private $options;
+    private array $options;
 
     /**
      * @param string $dataClass the FQCN of the data class to use for this form

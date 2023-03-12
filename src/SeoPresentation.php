@@ -42,22 +42,19 @@ class SeoPresentation implements SeoPresentationInterface
     /**
      * Original URL should be output as canonical URL.
      */
-    const ORIGINAL_URL_CANONICAL = 'canonical';
+    public const ORIGINAL_URL_CANONICAL = 'canonical';
 
     /**
      * Redirect to original URL if not currently on original URL.
      */
-    const ORIGINAL_URL_REDIRECT = 'redirect';
+    public const ORIGINAL_URL_REDIRECT = 'redirect';
 
     public static $originalUrlBehaviours = [
         self::ORIGINAL_URL_CANONICAL,
         self::ORIGINAL_URL_REDIRECT,
     ];
 
-    /**
-     * @var SeoPage
-     */
-    private $sonataPage;
+    private \Sonata\SeoBundle\Seo\SeoPage $sonataPage;
 
     /**
      * @var bool
@@ -67,22 +64,13 @@ class SeoPresentation implements SeoPresentationInterface
     /**
      * @var ExtractorInterface[]
      */
-    private $extractors = [];
+    private array $extractors = [];
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private \Symfony\Component\Translation\TranslatorInterface $translator;
 
-    /**
-     * @var ConfigValues
-     */
-    private $configValues;
+    private \Symfony\Cmf\Bundle\SeoBundle\DependencyInjection\ConfigValues $configValues;
 
-    /**
-     * @var null|CacheInterface
-     */
-    private $cache;
+    private ?\Symfony\Cmf\Bundle\SeoBundle\Cache\CacheInterface $cache = null;
 
     /**
      * The constructor will set the injected SeoPage - the service of
@@ -195,9 +183,7 @@ class SeoPresentation implements SeoPresentationInterface
         $extractors = [];
         ksort($this->extractors);
         foreach ($this->extractors as $priority) {
-            $supportedExtractors = array_filter($priority, function (ExtractorInterface $extractor) use ($content) {
-                return $extractor->supports($content);
-            });
+            $supportedExtractors = array_filter($priority, fn(ExtractorInterface $extractor) => $extractor->supports($content));
 
             $extractors = array_merge($extractors, $supportedExtractors);
         }
@@ -295,9 +281,7 @@ class SeoPresentation implements SeoPresentationInterface
     private function createKeywords($contentKeywords)
     {
         $metas = $this->sonataPage->getMetas();
-        $sonataKeywords = isset($metas['name']['keywords'][0])
-           ? $metas['name']['keywords'][0]
-           : '';
+        $sonataKeywords = $metas['name']['keywords'][0] ?? '';
 
         return ('' !== $sonataKeywords ? $sonataKeywords.', ' : '').$contentKeywords;
     }

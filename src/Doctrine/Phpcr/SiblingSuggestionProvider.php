@@ -34,7 +34,7 @@ class SiblingSuggestionProvider extends BaseSuggestionProvider
         }
 
         $routes = [];
-        $manager = $this->getManagerForClass('Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route');
+        $manager = $this->getManagerForClass(\Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route::class);
         $childRoutes = $manager->getChildren($parentRoute);
 
         foreach ($childRoutes->toArray() as $childRoute) {

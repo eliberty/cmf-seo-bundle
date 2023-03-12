@@ -66,7 +66,7 @@ abstract class BaseSuggestionProvider implements SuggestionProviderInterface
      */
     protected function findParentRoute($requestedPath)
     {
-        $manager = $this->getManagerForClass('Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route');
+        $manager = $this->getManagerForClass(\Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route::class);
         $parentPaths = [];
 
         foreach ($this->routeBasePaths as $basepath) {
