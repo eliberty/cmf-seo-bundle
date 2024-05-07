@@ -30,7 +30,7 @@
         "doctrine/phpcr-odm": "^1.4.2 || ^2.0",
         "doctrine/orm": "^2.4",
         "eliberty/cmf-core-bundle": "^2.500",
-        "eliberty/cmf-routing-bundle": "^2.500",
+        "symfony-cmf/routing-bundle": "^2.1.0",
         "matthiasnoback/symfony-dependency-injection-test": "^1.1",
         "matthiasnoback/symfony-config-test": "^2.1",
         "symfony/phpunit-bridge": "^3.4 || ^4.0",
