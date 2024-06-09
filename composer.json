@@ -23,7 +23,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "symfony/framework-bundle": "^3.4 || ^4.0",
-        "sonata-project/seo-bundle": "^2.10",
+        "sonata-project/seo-bundle": "^2.10 || ^3",
         "doctrine/collections": "^1.0"
     },
     "require-dev": {
