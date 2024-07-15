@@ -54,7 +54,7 @@ class SeoPresentation implements SeoPresentationInterface
         self::ORIGINAL_URL_REDIRECT,
     ];
 
-    private \Sonata\SeoBundle\Seo\SeoPage $sonataPage;
+    private SeoPage $sonataPage;
 
     /**
      * @var bool
@@ -66,11 +66,11 @@ class SeoPresentation implements SeoPresentationInterface
      */
     private array $extractors = [];
 
-    private \Symfony\Component\Translation\TranslatorInterface $translator;
+    private TranslatorInterface $translator;
 
-    private \Symfony\Cmf\Bundle\SeoBundle\DependencyInjection\ConfigValues $configValues;
+    private ConfigValues $configValues;
 
-    private ?\Symfony\Cmf\Bundle\SeoBundle\Cache\CacheInterface $cache = null;
+    private ?CacheInterface $cache = null;
 
     /**
      * The constructor will set the injected SeoPage - the service of
@@ -201,18 +201,27 @@ class SeoPresentation implements SeoPresentationInterface
 
         if ($extraProperties = $seoMetadata->getExtraProperties()) {
             foreach ($extraProperties as $key => $value) {
+                if (empty($value)) {
+                    continue;
+                }
                 $this->sonataPage->addMeta('property', $key, $value);
             }
         }
 
         if ($extraNames = $seoMetadata->getExtraNames()) {
             foreach ($extraNames as $key => $value) {
+                if (empty($value)) {
+                    continue;
+                }
                 $this->sonataPage->addMeta('name', $key, $value);
             }
         }
 
         if ($extraHttp = $seoMetadata->getExtraHttp()) {
             foreach ($extraHttp as $key => $value) {
+                if (empty($value)) {
+                    continue;
+                }
                 $this->sonataPage->addMeta('http-equiv', $key, $value);
             }
         }
@@ -238,11 +247,13 @@ class SeoPresentation implements SeoPresentationInterface
                 )
                 : $seoMetadata->getMetaDescription();
 
-            $this->sonataPage->addMeta(
-                'name',
-                'description',
-                $pageDescription
-            );
+            if ($pageDescription) {
+                $this->sonataPage->addMeta(
+                    'name',
+                    'description',
+                    $pageDescription
+                );
+            }
         }
 
         if ($seoMetadata->getMetaKeywords()) {
