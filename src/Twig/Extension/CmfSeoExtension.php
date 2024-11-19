@@ -11,9 +11,11 @@
 
 namespace Symfony\Cmf\Bundle\SeoBundle\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 use Symfony\Cmf\Bundle\SeoBundle\SeoPresentationInterface;
 
-class CmfSeoExtension extends \Twig_Extension
+class CmfSeoExtension extends AbstractExtension
 {
     /**
      * @var SeoPresentationInterface
@@ -34,7 +36,7 @@ class CmfSeoExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('cmf_seo_update_metadata', [$this, 'updateMetadata']),
+            new TwigFunction('cmf_seo_update_metadata', [$this, 'updateMetadata']),
         ];
     }
 

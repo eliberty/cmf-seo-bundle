@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestMatcherInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
+use Twig\Environment;
 
 /**
  * This presentation model enriches the the values to render the
@@ -54,7 +55,7 @@ class SuggestionProviderController extends ExceptionController
     private $exclusionRequestMatcher;
 
     /**
-     * @param \Twig_Environment       $twig
+     * @param Environment       $twig
      * @param bool                    $debug
      * @param RequestMatcherInterface $requestMatcher     The exclusion matcher to decider whether a route should be handled
      *                                                    by this error handling. It uses the defined exclusion_rules in the
@@ -63,7 +64,7 @@ class SuggestionProviderController extends ExceptionController
      * @param array                   $suggestionProvider A list of provider and group pairs
      */
     public function __construct(
-        \Twig_Environment $twig,
+        Environment $twig,
         $debug,
         RequestMatcherInterface $requestMatcher,
         $templates,
