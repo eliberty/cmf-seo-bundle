@@ -85,7 +85,7 @@ class SeoPresentation implements SeoPresentationInterface
         SeoPage $sonataPage,
         TranslatorInterface $translator,
         ConfigValues $configValues,
-        CacheInterface $cache = null
+        ?CacheInterface $cache = null
     ) {
         $this->sonataPage = $sonataPage;
         $this->translator = $translator;

@@ -80,7 +80,7 @@ class SuggestionProviderController extends ExceptionController
     public function listAction(
         Request $request,
         FlattenException $exception,
-        DebugLoggerInterface $logger = null
+        ?DebugLoggerInterface $logger = null
     ) {
         $code = $exception->getStatusCode();
         if (404 !== $code || $this->exclusionRequestMatcher->matches($request)) {
