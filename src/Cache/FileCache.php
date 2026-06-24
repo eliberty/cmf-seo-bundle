@@ -103,7 +103,7 @@ class FileCache implements CacheInterface, CacheWarmerInterface, CacheClearerInt
     /**
      * {@inheritdoc}
      */
-    public function isOptional()
+    public function isOptional(): bool
     {
         return false;
     }
@@ -111,11 +111,13 @@ class FileCache implements CacheInterface, CacheWarmerInterface, CacheClearerInt
     /**
      * {@inheritdoc}
      */
-    public function warmUp($cacheDir)
+    public function warmUp($cacheDir): array
     {
         if (!is_dir($this->dir)) {
             mkdir($this->dir, 0775, true);
         }
+
+        return [];
     }
 
     /**

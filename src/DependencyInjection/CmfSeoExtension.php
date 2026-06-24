@@ -17,7 +17,6 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -124,7 +123,7 @@ class CmfSeoExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function getNamespace()
+    public function getNamespace(): string
     {
         return 'http://cmf.symfony.com/schema/dic/seo';
     }
@@ -132,7 +131,7 @@ class CmfSeoExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function getXsdValidationBasePath()
+    public function getXsdValidationBasePath(): string|false
     {
         return __DIR__.'/../Resources/config/schema';
     }
@@ -245,12 +244,7 @@ class CmfSeoExtension extends Extension
         $id = 'cmf_seo.error.request_matcher.'.md5($serialized).sha1($serialized);
 
         if (!$container->hasDefinition($id)) {
-            if (class_exists(ChildDefinition::class)) {
-                $definition = new ChildDefinition('cmf_seo.error.request_matcher');
-            } else {
-                // BC with Symfony <3.3
-                $definition = new DefinitionDecorator('cmf_seo.error.request_matcher');
-            }
+            $definition = new ChildDefinition('cmf_seo.error.request_matcher');
 
             $container
                 ->setDefinition($id, $definition)

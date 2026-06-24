@@ -54,7 +54,7 @@ class SeoMetadataType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('title', TextType::class, ['label' => 'form.label_title'])
@@ -86,7 +86,7 @@ class SeoMetadataType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => $this->dataClass,
@@ -97,13 +97,5 @@ class SeoMetadataType extends AbstractType
         if ('orm' === $this->options['storage']) {
             $resolver->setDefault('by_reference', false);
         }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'seo_metadata';
     }
 }

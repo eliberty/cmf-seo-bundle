@@ -26,7 +26,7 @@ use Symfony\Component\Templating\EngineInterface;
 class SitemapController
 {
     /**
-     * @var EngineInterface
+     * @var \Twig\Environment
      */
     private $templating;
 
@@ -49,12 +49,12 @@ class SitemapController
      * Json is serialized by default, but can be customized with a template
      *
      * @param UrlInformationProvider $sitemapProvider
-     * @param EngineInterface        $templating
+     * @param \Twig\Environment $templating
      * @param array                  $configurations  list of available sitemap configurations
      */
     public function __construct(
         UrlInformationProvider $sitemapProvider,
-        EngineInterface $templating,
+        \Twig\Environment $templating,
         array $configurations
     ) {
         $this->templating = $templating;

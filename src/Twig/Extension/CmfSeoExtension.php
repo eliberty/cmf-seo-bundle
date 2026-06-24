@@ -36,7 +36,7 @@ class CmfSeoExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('cmf_seo_update_metadata', [$this, 'updateMetadata']),
+            new TwigFunction('cmf_seo_update_metadata', $this->updateMetadata(...)),
         ];
     }
 
