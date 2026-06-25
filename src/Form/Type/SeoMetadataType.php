@@ -11,7 +11,6 @@
 
 namespace Symfony\Cmf\Bundle\SeoBundle\Form\Type;
 
-use Burgov\Bundle\KeyValueFormBundle\Form\Type\KeyValueType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -36,7 +35,8 @@ class SeoMetadataType extends AbstractType
      * @param string $dataClass the FQCN of the data class to use for this form
      * @param array  $options   List of options to tweak the form
      *                          - string  "storage"  Storage system that is used to use the correct form settings. undefined|phpcr|orm
-     *                          - boolean "generic_metadata" Whether to enable extra fields. Requires BurgovKeyValueFormBundle
+     *                          - boolean "generic_metadata" Deprecated/inert: the extra-field editor relied on the abandoned
+     *                            burgov/key-value-form-bundle and has been removed. The option is kept for BC.
      */
     public function __construct($dataClass, array $options = [])
     {
@@ -62,25 +62,9 @@ class SeoMetadataType extends AbstractType
             ->add('metaDescription', TextareaType::class, ['label' => 'form.label_metaDescription'])
             ->add('metaKeywords', TextareaType::class, ['label' => 'form.label_metaKeywords'])
         ;
-        if ($this->options['generic_metadata']) {
-            $builder
-                ->add('extraProperties', KeyValueType::class, [
-                    'label' => 'form.label_extraProperties',
-                    'value_type' => TextType::class,
-                    'use_container_object' => true,
-                ])
-                ->add('extraNames', KeyValueType::class, [
-                    'label' => 'form.label_extraNames',
-                    'value_type' => TextType::class,
-                    'use_container_object' => true,
-                ])
-                ->add('extraHttp', KeyValueType::class, [
-                    'label' => 'form.label_extraHttp',
-                    'value_type' => TextType::class,
-                    'use_container_object' => true,
-                ])
-            ;
-        }
+
+        // The generic extra-field editor (extraProperties/extraNames/extraHttp) was
+        // backed by the abandoned burgov/key-value-form-bundle and has been removed.
     }
 
     /**

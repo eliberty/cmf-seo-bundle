@@ -371,17 +371,10 @@ class CmfSeoExtension extends Extension
         }
         $container->setParameter('cmf_seo.form.data_class.seo_metadata', $seoMetadataClass);
 
-        $genericMetadata = false;
-        if ($config['options']['generic_metadata']) {
-            $bundles = $container->getParameter('kernel.bundles');
-            if (true === $config['options']['generic_metadata'] && !array_key_exists('BurgovKeyValueFormBundle', $bundles)) {
-                throw new InvalidConfigurationException('To edit generic fields for the HTML header, you need the burgov/key-value-form-bundle in your project.');
-            }
-            $genericMetadata = array_key_exists('BurgovKeyValueFormBundle', $bundles);
-        }
-
+        // The generic extra-field editor relied on the abandoned
+        // burgov/key-value-form-bundle and has been removed; the option is now inert.
         $container->setParameter('cmf_seo.form.options', [
-            'generic_metadata' => $genericMetadata,
+            'generic_metadata' => false,
             'storage' => $storage,
         ]);
     }

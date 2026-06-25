@@ -288,7 +288,7 @@ class Configuration implements ConfigurationInterface
                         ->addDefaultsIfNotSet()
                         ->children()
                             ->enumNode('generic_metadata')
-                                ->info('Whether to show fields to edit generic SEO information. Needs burgov/key-value-form-bundle.')
+                                ->info('Deprecated/inert: the generic SEO field editor relied on the abandoned burgov/key-value-form-bundle and has been removed.')
                                 ->values([true, false, 'auto'])
                                 ->defaultValue('auto')
                             ->end()
