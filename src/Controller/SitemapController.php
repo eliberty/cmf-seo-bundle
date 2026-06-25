@@ -16,7 +16,6 @@ use Symfony\Cmf\Bundle\SeoBundle\Sitemap\UrlInformationProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Templating\EngineInterface;
 
 /**
  * Controller to handle requests for sitemap.

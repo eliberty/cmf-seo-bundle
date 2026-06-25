@@ -34,10 +34,7 @@ class ExclusionMatcher implements RequestMatcherInterface
         $this->matchersMap[] = $ruleMatcher;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function matches(Request $request)
+    public function matches(Request $request): bool
     {
         foreach ($this->matchersMap as $matcher) {
             if ($matcher->matches($request)) {
