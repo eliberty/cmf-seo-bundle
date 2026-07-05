@@ -53,7 +53,7 @@ class SeoMetadata extends SeoMetadataModel implements HierarchyInterface, Transl
     /**
      * {@inheritdoc}
      */
-    public function setParentDocument($parentDocument)
+    public function setParentDocument(object $parentDocument): self
     {
         $this->parentDocument = $parentDocument;
 
@@ -63,7 +63,7 @@ class SeoMetadata extends SeoMetadataModel implements HierarchyInterface, Transl
     /**
      * {@inheritdoc}
      */
-    public function getParentDocument()
+    public function getParentDocument(): ?object
     {
         return $this->parentDocument;
     }

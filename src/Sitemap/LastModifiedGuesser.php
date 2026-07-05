@@ -11,7 +11,7 @@
 
 namespace Symfony\Cmf\Bundle\SeoBundle\Sitemap;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Common\Util\ClassUtils;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use Doctrine\ODM\PHPCR\Mapping\ClassMetadata;
@@ -25,7 +25,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Model\UrlInformation;
  */
 class LastModifiedGuesser implements GuesserInterface
 {
-    private \Doctrine\Common\Persistence\ManagerRegistry $managerRegistry;
+    private \Doctrine\Persistence\ManagerRegistry $managerRegistry;
 
     /**
      * LastModifiedGuesser constructor.

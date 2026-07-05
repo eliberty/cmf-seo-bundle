@@ -11,7 +11,7 @@
 
 namespace Symfony\Cmf\Bundle\SeoBundle\Doctrine\Phpcr;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 use Symfony\Cmf\Bundle\SeoBundle\AlternateLocaleProviderInterface;
@@ -33,7 +33,7 @@ class AlternateLocaleProvider implements AlternateLocaleProviderInterface
 {
     private \Symfony\Component\Routing\Generator\UrlGeneratorInterface $urlGenerator;
 
-    private \Doctrine\Common\Persistence\ManagerRegistry $managerRegistry;
+    private \Doctrine\Persistence\ManagerRegistry $managerRegistry;
 
     /**
      * @param ManagerRegistry       $managerRegistry

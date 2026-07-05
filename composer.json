@@ -24,7 +24,7 @@
         "php": "^7.4|^8.0",
         "symfony/framework-bundle": "^3.4 || ^4.0 || ^5.0 || ^6.0",
         "sonata-project/seo-bundle": "^2.10 || ^3",
-        "doctrine/collections": "^1.0"
+        "doctrine/collections": "^1.0 || ^2.0"
     },
     "require-dev": {
         "doctrine/phpcr-odm": "^1.4.2 || ^2.0",
