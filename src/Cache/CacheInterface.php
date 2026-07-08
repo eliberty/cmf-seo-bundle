@@ -32,7 +32,6 @@ interface CacheInterface
      * Saves extractors into the cache.
      *
      * @param string $class
-     * @param array  $extractors
      */
     public function putExtractorsInCache($class, array $extractors);
 }

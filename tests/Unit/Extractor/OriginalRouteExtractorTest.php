@@ -20,7 +20,7 @@ class OriginalRouteExtractorTest extends BaseTestCase
 {
     protected $urlGenerator;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -30,7 +30,7 @@ class OriginalRouteExtractorTest extends BaseTestCase
         $this->metadataMethod = 'setOriginalUrl';
     }
 
-    public function getSupportsData()
+    public function getSupportsData(): array
     {
         return [
             [$this->createMock(OriginalRouteReadInterface::class)],
@@ -38,7 +38,7 @@ class OriginalRouteExtractorTest extends BaseTestCase
         ];
     }
 
-    public function testExtracting()
+    public function testExtracting(): void
     {
         $this->urlGenerator->expects($this->any())
             ->method('generate')

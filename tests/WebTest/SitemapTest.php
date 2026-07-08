@@ -19,7 +19,7 @@ use Symfony\Cmf\Component\Testing\Functional\BaseTestCase;
  */
 class SitemapTest extends BaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         (new PHPCRPurger($this->getDbManager('PHPCR')->getOm()))->purge();
         $this->db('PHPCR')->loadFixtures([
@@ -33,7 +33,7 @@ class SitemapTest extends BaseTestCase
      *
      * @dataProvider getFormats
      */
-    public function testSitemap($format, $expected)
+    public function testSitemap($format, $expected): void
     {
         $this->client->request('GET', '/sitemap.'.$format);
         $response = $this->client->getResponse();
@@ -47,7 +47,7 @@ class SitemapTest extends BaseTestCase
         }
     }
 
-    public function testDifferentSitemap()
+    public function testDifferentSitemap(): void
     {
         $this->client->request('GET', '/frequent.json');
         $response = $this->client->getResponse();
@@ -56,7 +56,7 @@ class SitemapTest extends BaseTestCase
         $this->assertContains('"always"', $response->getContent());
     }
 
-    public function testSitemapNotFound()
+    public function testSitemapNotFound(): void
     {
         $this->client->request('GET', '/nonexisting.json');
         $response = $this->client->getResponse();

@@ -45,7 +45,7 @@ class SeoAwareOrmContent implements SeoAwareInterface
     /**
      * @param mixed $body
      */
-    public function setBody($body)
+    public function setBody($body): void
     {
         $this->body = $body;
     }
@@ -61,7 +61,7 @@ class SeoAwareOrmContent implements SeoAwareInterface
     /**
      * @param mixed $id
      */
-    public function setId($id)
+    public function setId($id): void
     {
         $this->id = $id;
     }
@@ -77,7 +77,7 @@ class SeoAwareOrmContent implements SeoAwareInterface
     /**
      * @param mixed $title
      */
-    public function setTitle($title)
+    public function setTitle($title): void
     {
         $this->title = $title;
     }
@@ -101,7 +101,7 @@ class SeoAwareOrmContent implements SeoAwareInterface
     /**
      * {@inheritdoc}
      */
-    public function setSeoMetadata($metadata)
+    public function setSeoMetadata($metadata): void
     {
         $this->seoMetadata = $metadata;
     }

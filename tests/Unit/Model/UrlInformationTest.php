@@ -23,7 +23,7 @@ class UrlInformationTest extends \PHPUnit_Framework_Testcase
      */
     private $model;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->model = new UrlInformation();
     }
@@ -32,12 +32,12 @@ class UrlInformationTest extends \PHPUnit_Framework_Testcase
      * @expectedException \Symfony\Cmf\Bundle\SeoBundle\Exception\InvalidArgumentException
      * @expectedExceptionMessage Invalid change frequency "some one", use one of always, hourly, daily, weekly, monthly, yearly, never.
      */
-    public function testSetChangeFrequencyShouldThrowExceptionForInvalidArguments()
+    public function testSetChangeFrequencyShouldThrowExceptionForInvalidArguments(): void
     {
         $this->model->setChangeFrequency('some one');
     }
 
-    public function testValidChangeFrequency()
+    public function testValidChangeFrequency(): void
     {
         $this->model->setChangeFrequency('never');
 

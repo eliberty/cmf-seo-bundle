@@ -39,7 +39,7 @@ abstract class AbstractChain
      * @param int    $priority the higher the value, the earlier the item comes in the chain
      * @param string $sitemap  Name of the sitemap to add the entry for. Null adds the entry to all sitemaps.
      */
-    public function addItem($item, $priority = 0, $sitemap = null)
+    public function addItem($item, $priority = 0, $sitemap = null): void
     {
         if ($sitemap) {
             if (!isset($this->items[$sitemap])) {

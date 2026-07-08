@@ -26,7 +26,7 @@ class RegisterSuggestionProviderPass implements CompilerPassInterface
      *
      * @throws LogicException if a tagged service is not public
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->hasDefinition('cmf_seo.error.suggestion_provider.controller')) {
             return;

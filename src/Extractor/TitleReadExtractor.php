@@ -31,7 +31,7 @@ class TitleReadExtractor implements ExtractorInterface
     /**
      * {@inheritdoc}
      */
-    public function updateMetadata($content, SeoMetadataInterface $seoMetadata)
+    public function updateMetadata($content, SeoMetadataInterface $seoMetadata): void
     {
         if (!$seoMetadata->getTitle()) {
             $seoMetadata->setTitle($content->getTitle());

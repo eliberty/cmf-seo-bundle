@@ -17,7 +17,7 @@ use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 
 class OriginalUrlExtractorTest extends BaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -26,7 +26,7 @@ class OriginalUrlExtractorTest extends BaseTestCase
         $this->metadataMethod = 'setOriginalUrl';
     }
 
-    public function getSupportsData()
+    public function getSupportsData(): array
     {
         return [
             [$this->createMock(OriginalUrlReadInterface::class)],

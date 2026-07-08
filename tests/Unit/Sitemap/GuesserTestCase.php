@@ -29,7 +29,7 @@ abstract class GuesserTestCase extends \PHPUnit_Framework_Testcase
      */
     protected $data;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->guesser = $this->createGuesser();
         $this->data = $this->createData();
@@ -53,7 +53,7 @@ abstract class GuesserTestCase extends \PHPUnit_Framework_Testcase
     /**
      * If the information is already set, it must not be overwritten.
      */
-    public function testGuessNoOverwrite()
+    public function testGuessNoOverwrite(): void
     {
         $urlInformation = new UrlInformation();
         foreach ($this->getFields() as $field) {

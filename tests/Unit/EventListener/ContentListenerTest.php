@@ -29,7 +29,7 @@ class ContentListenerTest extends \PHPUnit_Framework_Testcase
 
     protected $listener;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->seoPresentation = $this->createMock(SeoPresentationInterface::class);
         $this->request = $this->createMock(Request::class);
@@ -40,7 +40,7 @@ class ContentListenerTest extends \PHPUnit_Framework_Testcase
     /**
      * @dataProvider getRedirectRouteData
      */
-    public function testRedirectRoute($targetUrl, $redirect = true, $currentPath = '/test')
+    public function testRedirectRoute($targetUrl, $redirect = true, $currentPath = '/test'): void
     {
         $redirectResponse = $this->createMock(RedirectResponse::class);
         $redirectResponse->expects($this->any())

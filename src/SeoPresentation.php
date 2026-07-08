@@ -76,9 +76,6 @@ class SeoPresentation implements SeoPresentationInterface
      * The constructor will set the injected SeoPage - the service of
      * sonata which is responsible for storing the seo data.
      *
-     * @param SeoPage             $sonataPage
-     * @param TranslatorInterface $translator
-     * @param ConfigValues        $configValues
      * @param CacheInterface      $cache
      */
     public function __construct(
@@ -93,10 +90,7 @@ class SeoPresentation implements SeoPresentationInterface
         $this->cache = $cache;
     }
 
-    /**
-     * @param RedirectResponse $redirect
-     */
-    private function setRedirectResponse(RedirectResponse $redirect)
+    private function setRedirectResponse(RedirectResponse $redirect): void
     {
         $this->redirectResponse = $redirect;
     }
@@ -112,10 +106,9 @@ class SeoPresentation implements SeoPresentationInterface
     /**
      * Add an extractor for SEO metadata.
      *
-     * @param ExtractorInterface $extractor
      * @param int                $priority
      */
-    public function addExtractor(ExtractorInterface $extractor, $priority = 0)
+    public function addExtractor(ExtractorInterface $extractor, $priority = 0): void
     {
         if (!isset($this->extractors[$priority])) {
             $this->extractors[$priority] = [];
@@ -178,7 +171,7 @@ class SeoPresentation implements SeoPresentationInterface
      *
      * @return ExtractorInterface[]
      */
-    private function getExtractorsForContent($content)
+    private function getExtractorsForContent($content): array
     {
         $extractors = [];
         ksort($this->extractors);
@@ -194,7 +187,7 @@ class SeoPresentation implements SeoPresentationInterface
     /**
      * {@inheritdoc}
      */
-    public function updateSeoPage($content)
+    public function updateSeoPage($content): void
     {
         $seoMetadata = $this->getSeoMetadata($content);
         $translationDomain = $this->configValues->getTranslationDomain();
@@ -286,10 +279,8 @@ class SeoPresentation implements SeoPresentationInterface
      * values.
      *
      * @param string $contentKeywords
-     *
-     * @return string
      */
-    private function createKeywords($contentKeywords)
+    private function createKeywords($contentKeywords): string
     {
         $metas = $this->sonataPage->getMetas();
         $sonataKeywords = $metas['name']['keywords'][0] ?? '';
@@ -300,7 +291,6 @@ class SeoPresentation implements SeoPresentationInterface
     /**
      * Copy the metadata object to sanitize it and remove doctrine traces.
      *
-     * @param SeoMetadataInterface $contentSeoMetadata
      *
      * @return SeoMetadata
      */
@@ -322,7 +312,7 @@ class SeoPresentation implements SeoPresentationInterface
     /**
      * {inheritDoc}.
      */
-    public function updateAlternateLocales(AlternateLocaleCollection $collection)
+    public function updateAlternateLocales(AlternateLocaleCollection $collection): void
     {
         foreach ($collection as $alternateLocale) {
             $this->sonataPage->addLangAlternate(

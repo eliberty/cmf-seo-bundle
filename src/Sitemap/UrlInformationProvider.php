@@ -23,11 +23,11 @@ use Symfony\Cmf\Bundle\SeoBundle\Model\UrlInformation;
  */
 class UrlInformationProvider
 {
-    private \Symfony\Cmf\Bundle\SeoBundle\Sitemap\LoaderChain $loader;
+    private LoaderChain $loader;
 
-    private \Symfony\Cmf\Bundle\SeoBundle\Sitemap\GuesserChain $guesser;
+    private GuesserChain $guesser;
 
-    private \Symfony\Cmf\Bundle\SeoBundle\Sitemap\VoterChain $voter;
+    private VoterChain $voter;
 
     public function __construct(
         LoaderChain $loader,
@@ -46,7 +46,7 @@ class UrlInformationProvider
      *
      * @return UrlInformation[]
      */
-    public function getUrlInformation($sitemap = 'default')
+    public function getUrlInformation($sitemap = 'default'): array
     {
         $urlInformationList = [];
 

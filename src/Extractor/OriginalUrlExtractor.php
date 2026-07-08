@@ -33,7 +33,7 @@ class OriginalUrlExtractor implements ExtractorInterface
     /**
      * {@inheritdoc}
      */
-    public function updateMetadata($content, SeoMetadataInterface $seoMetadata)
+    public function updateMetadata($content, SeoMetadataInterface $seoMetadata): void
     {
         $seoMetadata->setOriginalUrl($content->getSeoOriginalUrl());
     }

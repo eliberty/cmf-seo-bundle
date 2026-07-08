@@ -26,7 +26,7 @@ class VoterChain extends AbstractChain
      *
      * @return bool whether to expose this content
      */
-    public function exposeOnSitemap($content, $sitemap)
+    public function exposeOnSitemap($content, $sitemap): bool
     {
         /** @var $voter VoterInterface */
         foreach ($this->getSortedEntriesForSitemap($sitemap) as $voter) {

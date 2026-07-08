@@ -38,7 +38,7 @@ class SitemapControllerTest extends \PHPUnit_Framework_TestCase
      */
     private $controller;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->provider = $this->createMock(UrlInformationProvider::class);
         $this->provider
@@ -61,7 +61,7 @@ class SitemapControllerTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testRequestJson()
+    public function testRequestJson(): void
     {
         /** @var Response $response */
         $response = $this->controller->indexAction('json', 'test');
@@ -89,7 +89,7 @@ class SitemapControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, json_decode($response->getContent(), true));
     }
 
-    public function testRequestXml()
+    public function testRequestXml(): void
     {
         $this->templating->expects($this->once())
             ->method('render')
@@ -102,7 +102,7 @@ class SitemapControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('some-xml-string', $response->getContent());
     }
 
-    public function testRequestHtml()
+    public function testRequestHtml(): void
     {
         $expectedResponse = new Response('some-html-string');
         $this->templating->expects($this->once())->method('render')->will($this->returnValue($expectedResponse));
@@ -113,7 +113,7 @@ class SitemapControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedResponse, $response->getContent());
     }
 
-    private function createUrlInformation()
+    private function createUrlInformation(): array
     {
         $resultList = [];
 

@@ -17,14 +17,14 @@ use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 
 class ExtrasExtractorTest extends BaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->extractor = new ExtrasExtractor();
     }
 
-    public function getSupportsData()
+    public function getSupportsData(): array
     {
         return [
             [$this->createMock(ExtrasReadInterface::class)],
@@ -32,7 +32,7 @@ class ExtrasExtractorTest extends BaseTestCase
         ];
     }
 
-    public function testExtracting()
+    public function testExtracting(): void
     {
         $document = $this->getMockBuilder('ExtractedDocument')->setMethods(['getSeoExtras'])->getMock();
         $document->expects($this->any())

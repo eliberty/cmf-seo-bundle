@@ -17,7 +17,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Sitemap\SeoMetadataTitleGuesser;
 
 class SeoMetadataTitleGuesserTest extends GuesserTestCase
 {
-    public function testGuessCreate()
+    public function testGuessCreate(): void
     {
         $urlInformation = parent::testGuessCreate();
         $this->assertEquals('Symfony CMF', $urlInformation->getLabel());
@@ -26,7 +26,7 @@ class SeoMetadataTitleGuesserTest extends GuesserTestCase
     /**
      * {@inheritdoc}
      */
-    protected function createGuesser()
+    protected function createGuesser(): SeoMetadataTitleGuesser
     {
         $seoMetadata = new SeoMetadata();
         $seoMetadata->setTitle('Symfony CMF');
@@ -52,7 +52,7 @@ class SeoMetadataTitleGuesserTest extends GuesserTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getFields()
+    protected function getFields(): array
     {
         return ['Label'];
     }

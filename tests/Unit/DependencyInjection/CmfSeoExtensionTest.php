@@ -30,7 +30,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         ];
     }
 
-    public function testDefaults()
+    public function testDefaults(): void
     {
         $this->container->setParameter(
             'kernel.bundles',
@@ -52,7 +52,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderNotHasService('cmf_seo.error.suggestion_provider.sibling');
     }
 
-    public function testPersistencePHPCR()
+    public function testPersistencePHPCR(): void
     {
         $this->container->setParameter(
             'kernel.bundles',
@@ -80,7 +80,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testPersistenceORM()
+    public function testPersistenceORM(): void
     {
         $this->container->setParameter(
             'kernel.bundles',
@@ -105,7 +105,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testAlternateLocaleWithPhpcr()
+    public function testAlternateLocaleWithPhpcr(): void
     {
         $this->container->setParameter(
             'kernel.bundles',
@@ -135,7 +135,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testAlternateLocaleWithCustomProvider()
+    public function testAlternateLocaleWithCustomProvider(): void
     {
         $this->container->setParameter(
             'kernel.bundles',
@@ -159,7 +159,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testErrorHandlingPHPCR()
+    public function testErrorHandlingPHPCR(): void
     {
         $this->container->setParameter(
             'kernel.bundles',
@@ -225,10 +225,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         $this->assertMatcherCreated($attributes);
     }
 
-    /**
-     * @param array $arguments
-     */
-    private function assertMatcherCreated(array $arguments)
+    private function assertMatcherCreated(array $arguments): void
     {
         $count = 0;
         foreach ($this->container->getDefinitions() as $id => $definition) {
@@ -244,7 +241,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         $this->assertEquals(2, $count);
     }
 
-    public function testSitemapConfiguration()
+    public function testSitemapConfiguration(): void
     {
         $this->container->setParameter(
             'kernel.bundles',
@@ -374,7 +371,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testDefaultTemplatesSet()
+    public function testDefaultTemplatesSet(): void
     {
         $this->container->setParameter(
             'kernel.bundles',
@@ -410,7 +407,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testDisablingSitemapHelpers()
+    public function testDisablingSitemapHelpers(): void
     {
         $this->container->setParameter(
             'kernel.bundles',
@@ -445,7 +442,7 @@ class CmfSeoExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderNotHasService('cmf_seo.sitemap.publish_workflow_voter');
     }
 
-    public function testDisableSeoContentListener()
+    public function testDisableSeoContentListener(): void
     {
         $this->container->setParameter(
             'kernel.bundles',

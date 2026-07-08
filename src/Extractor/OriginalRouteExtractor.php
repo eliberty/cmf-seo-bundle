@@ -24,7 +24,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 class OriginalRouteExtractor implements ExtractorInterface
 {
-    private \Symfony\Component\Routing\Generator\UrlGeneratorInterface $urlGenerator;
+    private UrlGeneratorInterface $urlGenerator;
 
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
@@ -44,7 +44,7 @@ class OriginalRouteExtractor implements ExtractorInterface
      *
      * @param OriginalRouteReadInterface $content
      */
-    public function updateMetadata($content, SeoMetadataInterface $seoMetadata)
+    public function updateMetadata($content, SeoMetadataInterface $seoMetadata): void
     {
         $route = $content->getSeoOriginalRoute();
 

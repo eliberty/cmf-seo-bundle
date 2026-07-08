@@ -19,7 +19,7 @@ use Symfony\Cmf\Component\Testing\Functional\BaseTestCase;
 
 class SeoMetadataTest extends BaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         (new PHPCRPurger($this->getDbManager('PHPCR')->getOm()))->purge();
         $this->db('PHPCR')->createTestNode();
@@ -27,7 +27,7 @@ class SeoMetadataTest extends BaseTestCase
         $this->base = $this->dm->find(null, '/test');
     }
 
-    public function testSeoMetadataMapping()
+    public function testSeoMetadataMapping(): void
     {
         $content = new SeoAwareContent();
         $content
@@ -72,7 +72,7 @@ class SeoMetadataTest extends BaseTestCase
      * @expectedException \Doctrine\ODM\PHPCR\Exception\OutOfBoundsException
      * @expectedExceptionMessage It cannot have children
      */
-    public function testAddSeoMetadataChild()
+    public function testAddSeoMetadataChild(): void
     {
         $seoMetadata = new SeoMetadata();
         $seoMetadata->setName('seo-metadata');

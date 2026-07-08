@@ -24,7 +24,7 @@ abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
 
     protected $metadataMethod;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->seoMetadata = $this->createMock(SeoMetadataInterface::class);
     }
@@ -32,7 +32,7 @@ abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider getSupportsData
      */
-    public function testSupports($object, $supports = true)
+    public function testSupports($object, $supports = true): void
     {
         $result = $this->extractor->supports($object);
 
@@ -45,7 +45,7 @@ abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
 
     abstract public function getSupportsData();
 
-    public function testExtracting()
+    public function testExtracting(): void
     {
         $document = $this->getMockBuilder('ExtractedDocument')->setMethods([$this->extractMethod])->getMock();
         $document->expects($this->any())

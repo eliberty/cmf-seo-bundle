@@ -16,7 +16,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Cache\FileCache;
  */
 class FileCacheTest extends \PHPUnit_Framework_TestCase
 {
-    public function testThrowingExceptionForUnknownBaseDir()
+    public function testThrowingExceptionForUnknownBaseDir(): void
     {
         $thrown = false;
         $baseDir = __DIR__.'/unknown';
@@ -33,7 +33,7 @@ class FileCacheTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($message, sprintf('The directory "%s" does not exist.', $baseDir));
     }
 
-    public function testDirectoryCreation()
+    public function testDirectoryCreation(): void
     {
         $baseDir = __DIR__.'/base';
         $dir = 'test';

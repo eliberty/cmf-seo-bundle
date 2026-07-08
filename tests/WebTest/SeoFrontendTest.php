@@ -29,7 +29,7 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 class SeoFrontendTest extends BaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         (new PHPCRPurger($this->getDbManager('PHPCR')->getOm()))->purge();
         $this->db('PHPCR')->loadFixtures([
@@ -40,7 +40,7 @@ class SeoFrontendTest extends BaseTestCase
     /**
      * This test is without any setting in sonata_seo just cmf data.
      */
-    public function testDefaultUsage()
+    public function testDefaultUsage(): void
     {
         $crawler = $this->getClient()->request('GET', '/content/content-1');
         $res = $this->getClient()->getResponse();
@@ -73,7 +73,7 @@ class SeoFrontendTest extends BaseTestCase
         $this->assertEquals('/to/original', $linkCrawler->eq(0)->attr('href'));
     }
 
-    public function testExtractors()
+    public function testExtractors(): void
     {
         $crawler = $this->getClient()->request('GET', '/content/strategy-content');
         $res = $this->getClient()->getResponse();
@@ -109,7 +109,7 @@ class SeoFrontendTest extends BaseTestCase
     /**
      * @dataProvider getExtraProperties
      */
-    public function testExtraProperties($expectedType, $expectedKey, $expectedValue)
+    public function testExtraProperties($expectedType, $expectedKey, $expectedValue): void
     {
         $crawler = $this->getClient()->request('GET', '/content/content-extra');
         $res = $this->getClient()->getResponse();
@@ -136,7 +136,7 @@ class SeoFrontendTest extends BaseTestCase
         ];
     }
 
-    public function testAlternateLanguages()
+    public function testAlternateLanguages(): void
     {
         $crawler = $this->getClient()->request('GET', '/en/alternate-locale-content');
         $res = $this->getClient()->getResponse();
@@ -159,7 +159,7 @@ class SeoFrontendTest extends BaseTestCase
         $this->assertEquals($expectedArray, $linkCrawler->extract(['rel', 'href', 'hreflang']));
     }
 
-    public function testErrorHandling()
+    public function testErrorHandling(): void
     {
         $crawler = $this->getClient()->request('GET', '/content/content-1/content-depp');
         $res = $this->getClient()->getResponse();
@@ -171,13 +171,13 @@ class SeoFrontendTest extends BaseTestCase
         $this->assertCount(1, $crawler->filter('html:contains("sibling - content-deeper")'));
     }
 
-    public function testErrorHandlingInvalidPhpcrPath()
+    public function testErrorHandlingInvalidPhpcrPath(): void
     {
         $this->getClient()->request('GET', '/content/content-1/content[a]b/sub?bla=blup');
         $this->assertEquals(404, $this->getClient()->getResponse()->getStatusCode());
     }
 
-    public function testErrorHandlingForExcludedPath()
+    public function testErrorHandlingForExcludedPath(): void
     {
         $crawler = $this->getClient()->request('GET', '/content/content-1/content-excluded');
         $res = $this->getClient()->getResponse();
@@ -188,7 +188,7 @@ class SeoFrontendTest extends BaseTestCase
         $this->assertCount(1, $crawler->filter('html:contains("No route found for")'));
     }
 
-    public function testContentLanguageHeader()
+    public function testContentLanguageHeader(): void
     {
         $crawler = $this->getClient()->request('GET', '/en/alternate-locale-content');
         $res = $this->getClient()->getResponse();

@@ -37,7 +37,7 @@ trait SeoAwareTrait
     /**
      * {@inheritdoc}
      */
-    public function setSeoMetadata($metadata)
+    public function setSeoMetadata($metadata): void
     {
         $this->seoMetadata = $metadata;
     }

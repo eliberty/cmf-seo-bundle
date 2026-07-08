@@ -35,7 +35,7 @@ class ExtrasExtractor implements ExtractorInterface
      *
      * @param ExtrasReadInterface $content
      */
-    public function updateMetadata($content, SeoMetadataInterface $seoMetadata)
+    public function updateMetadata($content, SeoMetadataInterface $seoMetadata): void
     {
         $allowedTypesMethodMapping = [
             'property' => 'addExtraProperty',

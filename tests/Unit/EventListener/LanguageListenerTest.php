@@ -28,7 +28,7 @@ class LanguageListenerTest extends \PHPUnit_Framework_Testcase
     /**
      * @dataProvider provideRequestLocales
      */
-    public function testSetsContentLanguageHeader($locale)
+    public function testSetsContentLanguageHeader($locale): void
     {
         $request = Request::create('/');
         $request->setLocale($locale);
@@ -52,7 +52,7 @@ class LanguageListenerTest extends \PHPUnit_Framework_Testcase
         ];
     }
 
-    public function testDoesNotOverridePreSetContentLanguage()
+    public function testDoesNotOverridePreSetContentLanguage(): void
     {
         $request = Request::create('/');
         $request->setLocale('en');

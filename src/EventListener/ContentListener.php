@@ -27,7 +27,7 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
  */
 class ContentListener
 {
-    private \Symfony\Cmf\Bundle\SeoBundle\SeoPresentationInterface $seoPresentation;
+    private SeoPresentationInterface $seoPresentation;
 
     /**
      * @var string The key to look up the content in the request attributes
@@ -49,7 +49,7 @@ class ContentListener
         $this->requestKey = $requestKey;
     }
 
-    public function onKernelRequest(RequestEvent $event)
+    public function onKernelRequest(RequestEvent $event): void
     {
         if ($event->getRequest()->attributes->has($this->requestKey)) {
             $content = $event->getRequest()->attributes->get($this->requestKey);
@@ -69,10 +69,10 @@ class ContentListener
         }
     }
 
-    protected function canBeRedirected(Request $request, RedirectResponse $response)
+    protected function canBeRedirected(Request $request, RedirectResponse $response): bool
     {
         $targetRequest = Request::create($response->getTargetUrl());
-        $stripUrl = fn($path) => preg_replace('/#.+$/', '', $path);
+        $stripUrl = fn($path): string|array|null => preg_replace('/#.+$/', '', $path);
         $targetPath = $stripUrl($targetRequest->getBaseUrl().$targetRequest->getPathInfo());
         $currentPath = $stripUrl($request->getBaseUrl().$request->getPathInfo());
 
@@ -82,7 +82,7 @@ class ContentListener
     /**
      * @param AlternateLocaleProviderInterface $alternateLocaleProvider
      */
-    public function setAlternateLocaleProvider($alternateLocaleProvider)
+    public function setAlternateLocaleProvider($alternateLocaleProvider): void
     {
         $this->alternateLocaleProvider = $alternateLocaleProvider;
     }

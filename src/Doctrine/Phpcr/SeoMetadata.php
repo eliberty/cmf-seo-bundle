@@ -72,7 +72,7 @@ class SeoMetadata extends SeoMetadataModel implements HierarchyInterface, Transl
      * @deprecated For compatibility with Doctrine PHPCR ODM 1.4, to be removed in version 3.0.
      * @see setParentDocument
      */
-    public function setParent($parent)
+    public function setParent($parent): \Symfony\Cmf\Bundle\SeoBundle\Doctrine\Phpcr\SeoMetadata
     {
         @trigger_error('The '.__METHOD__.'() method is deprecated and will be removed in version 3.0. Use setParentDocument() instead.', E_USER_DEPRECATED);
 
@@ -83,7 +83,7 @@ class SeoMetadata extends SeoMetadataModel implements HierarchyInterface, Transl
      * @deprecated For compatibility with Doctrine PHPCR ODM 1.4, to be removed in version 3.0.
      * @see getParentDocument
      */
-    public function getParent()
+    public function getParent(): ?object
     {
         @trigger_error('The '.__METHOD__.'() method is deprecated and will be removed in version 3.0. Use getParentDocument() instead.', E_USER_DEPRECATED);
 

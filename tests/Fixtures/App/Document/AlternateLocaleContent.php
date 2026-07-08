@@ -94,7 +94,7 @@ class AlternateLocaleContent extends ContentBase implements RouteReferrersInterf
      * @param string|bool $locale the local for this model, or false if
      *                            translations are disabled in this project
      */
-    public function setLocale($locale)
+    public function setLocale($locale): void
     {
         $this->locale = $locale;
     }

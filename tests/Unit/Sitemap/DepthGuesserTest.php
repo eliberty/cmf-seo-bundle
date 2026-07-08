@@ -85,10 +85,8 @@ class DepthGuesserTest extends GuesserTestCase
 
     /**
      * Provide list of fields in UrlInformation covered by this guesser.
-     *
-     * @return array
      */
-    protected function getFields()
+    protected function getFields(): array
     {
         return ['depth'];
     }
@@ -98,7 +96,7 @@ class DepthGuesserTest extends GuesserTestCase
      *
      * @param string $contentBasePath
      */
-    private function buildMocks($contentBasePath = '/cms/test')
+    private function buildMocks($contentBasePath = '/cms/test'): void
     {
         $this->managerRegistry = $this->createMock(ManagerRegistry::class);
         $this->documentManager = $this->createMock(DocumentManager::class);
@@ -107,7 +105,7 @@ class DepthGuesserTest extends GuesserTestCase
         $this->guesser = new DepthGuesser($this->managerRegistry, $contentBasePath);
     }
 
-    public function testNullOnNoManager()
+    public function testNullOnNoManager(): void
     {
         $this->buildMocks();
         $this->managerRegistry
@@ -121,7 +119,7 @@ class DepthGuesserTest extends GuesserTestCase
         $this->assertNull($urlInformation->getDepth());
     }
 
-    public function testDepthOffsetCalculation()
+    public function testDepthOffsetCalculation(): void
     {
         $this->buildMocks();
 
@@ -145,7 +143,7 @@ class DepthGuesserTest extends GuesserTestCase
         $this->assertEquals(1, $urlInformation->getDepth());
     }
 
-    public function testRootEdgeCase()
+    public function testRootEdgeCase(): void
     {
         $this->buildMocks('/');
 

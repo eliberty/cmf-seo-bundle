@@ -21,7 +21,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Tests\Fixtures\App\Document\SitemapAwareWithPub
 
 class LoadSitemapData implements FixtureInterface
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         NodeHelper::createPath($manager->getPhpcrSession(), '/test');
 

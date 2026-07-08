@@ -20,8 +20,9 @@ class LoaderChain extends AbstractChain
 {
     /**
      * {@inheritdoc}
+     * @return mixed[]
      */
-    public function load($sitemap)
+    public function load($sitemap): array
     {
         $documents = [];
 

@@ -17,7 +17,7 @@ use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 
 class KeywordsExtractorTest extends BaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -26,7 +26,7 @@ class KeywordsExtractorTest extends BaseTestCase
         $this->metadataMethod = 'setMetaKeywords';
     }
 
-    public function getSupportsData()
+    public function getSupportsData(): array
     {
         return [
             [$this->createMock(KeywordsReadInterface::class)],

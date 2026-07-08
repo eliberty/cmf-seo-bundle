@@ -34,7 +34,7 @@ class KeywordsExtractor implements ExtractorInterface
      *
      * @param KeywordsReadInterface $content
      */
-    public function updateMetadata($content, SeoMetadataInterface $seoMetadata)
+    public function updateMetadata($content, SeoMetadataInterface $seoMetadata): void
     {
         $keywords = $content->getSeoKeywords();
         if (is_array($keywords)) {

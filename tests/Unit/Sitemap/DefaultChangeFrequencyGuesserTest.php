@@ -15,7 +15,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Sitemap\DefaultChangeFrequencyGuesser;
 
 class DefaultChangeFrequencyGuesserTest extends GuesserTestCase
 {
-    public function testGuessCreate()
+    public function testGuessCreate(): void
     {
         $urlInformation = parent::testGuessCreate();
         $this->assertEquals('weekly', $urlInformation->getChangeFrequency());
@@ -24,7 +24,7 @@ class DefaultChangeFrequencyGuesserTest extends GuesserTestCase
     /**
      * {@inheritdoc}
      */
-    protected function createGuesser()
+    protected function createGuesser(): DefaultChangeFrequencyGuesser
     {
         return new DefaultChangeFrequencyGuesser('weekly');
     }
@@ -40,7 +40,7 @@ class DefaultChangeFrequencyGuesserTest extends GuesserTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getFields()
+    protected function getFields(): array
     {
         return ['ChangeFrequency'];
     }

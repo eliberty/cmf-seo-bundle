@@ -34,7 +34,7 @@ class TitleExtractor implements ExtractorInterface
      *
      * @param TitleReadInterface $content
      */
-    public function updateMetadata($content, SeoMetadataInterface $seoMetadata)
+    public function updateMetadata($content, SeoMetadataInterface $seoMetadata): void
     {
         $seoMetadata->setTitle($content->getSeoTitle());
     }

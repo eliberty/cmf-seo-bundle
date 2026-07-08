@@ -21,7 +21,7 @@ class AlternateLocalesGuesserTest extends GuesserTestCase
     /**
      * {@inheritdoc}
      */
-    protected function createGuesser()
+    protected function createGuesser(): AlternateLocalesGuesser
     {
         $collection = new AlternateLocaleCollection();
         $collection->add(new AlternateLocale('http://symfony.com/fr', 'fr'));
@@ -48,7 +48,7 @@ class AlternateLocalesGuesserTest extends GuesserTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getFields()
+    protected function getFields(): array
     {
         return ['AlternateLocales'];
     }

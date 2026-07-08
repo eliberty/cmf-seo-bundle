@@ -33,7 +33,7 @@ class RegisterSuggestionProviderPassTest extends AbstractCompilerPassTestCase
         $container->addCompilerPass(new RegisterSuggestionProviderPass());
     }
 
-    public function testRegistersServicesWithMatcherTag()
+    public function testRegistersServicesWithMatcherTag(): void
     {
         $nonMatcherService = new Definition();
         $this->setDefinition('some_service', $nonMatcherService);
@@ -55,7 +55,7 @@ class RegisterSuggestionProviderPassTest extends AbstractCompilerPassTestCase
         );
     }
 
-    public function testRegistersServicesWithMatcherTagWithoutGroup()
+    public function testRegistersServicesWithMatcherTagWithoutGroup(): void
     {
         $nonMatcherService = new Definition();
         $this->setDefinition('some_service', $nonMatcherService);

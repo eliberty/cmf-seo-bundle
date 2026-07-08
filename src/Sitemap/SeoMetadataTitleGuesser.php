@@ -21,7 +21,7 @@ use Symfony\Cmf\Bundle\SeoBundle\SeoPresentation;
  */
 class SeoMetadataTitleGuesser implements GuesserInterface
 {
-    private \Symfony\Cmf\Bundle\SeoBundle\SeoPresentation $seoPresentation;
+    private SeoPresentation $seoPresentation;
 
     public function __construct(
         SeoPresentation $seoPresentation
@@ -32,7 +32,7 @@ class SeoMetadataTitleGuesser implements GuesserInterface
     /**
      * {@inheritdoc}.
      */
-    public function guessValues(UrlInformation $urlInformation, $object, $sitemap)
+    public function guessValues(UrlInformation $urlInformation, $object, $sitemap): void
     {
         if ($urlInformation->getLabel()) {
             return;

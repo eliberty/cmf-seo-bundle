@@ -42,7 +42,6 @@ interface ExtractorInterface
      * This method should only be called if supports returned true.
      *
      * @param object               $content
-     * @param SeoMetadataInterface $seoMetadata
      */
     public function updateMetadata($content, SeoMetadataInterface $seoMetadata);
 }

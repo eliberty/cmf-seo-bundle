@@ -40,8 +40,6 @@ interface SeoPresentationInterface
 
     /**
      * Updates alternate locale information on the Sonata SeoPage service.
-     *
-     * @param AlternateLocaleCollection $collection
      */
     public function updateAlternateLocales(AlternateLocaleCollection $collection);
 }

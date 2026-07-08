@@ -88,7 +88,7 @@ class SitemapAwareContent extends ContentBase implements RouteReferrersReadInter
      *
      * @param Route $route
      */
-    public function addRoute($route)
+    public function addRoute($route): void
     {
         $this->routes->add($route);
     }
@@ -98,7 +98,7 @@ class SitemapAwareContent extends ContentBase implements RouteReferrersReadInter
      *
      * @param Route $route
      */
-    public function removeRoute($route)
+    public function removeRoute($route): void
     {
         $this->routes->removeElement($route);
     }
@@ -126,7 +126,7 @@ class SitemapAwareContent extends ContentBase implements RouteReferrersReadInter
      * @param string|bool $locale the local for this model, or false if
      *                            translations are disabled in this project
      */
-    public function setLocale($locale)
+    public function setLocale($locale): void
     {
         $this->locale = $locale;
     }

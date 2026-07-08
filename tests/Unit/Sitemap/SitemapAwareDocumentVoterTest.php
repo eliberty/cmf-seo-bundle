@@ -27,13 +27,13 @@ class SitemapAwareDocumentVoterTest extends \PHPUnit_Framework_TestCase
 
     protected $sitemapAwareDocument;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->voter = new SitemapAwareDocumentVoter();
         $this->sitemapAwareDocument = $this->createMock(SitemapAwareInterface::class);
     }
 
-    public function testSitemapAwareDocumentShouldReturnTrueWhenDocumentIsExposed()
+    public function testSitemapAwareDocumentShouldReturnTrueWhenDocumentIsExposed(): void
     {
         $this->sitemapAwareDocument
             ->expects($this->once())
@@ -42,7 +42,7 @@ class SitemapAwareDocumentVoterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->voter->exposeOnSitemap($this->sitemapAwareDocument, 'some-sitemap'));
     }
 
-    public function testSitemapAwareDocumentShouldReturnFalseWhenDocumentIsNotExposed()
+    public function testSitemapAwareDocumentShouldReturnFalseWhenDocumentIsNotExposed(): void
     {
         $this->sitemapAwareDocument
             ->expects($this->once())
@@ -51,7 +51,7 @@ class SitemapAwareDocumentVoterTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->voter->exposeOnSitemap($this->sitemapAwareDocument, 'some-sitemap'));
     }
 
-    public function testInvalidDocumentShouldReturnTrueToBeAwareForTheOtherVoters()
+    public function testInvalidDocumentShouldReturnTrueToBeAwareForTheOtherVoters(): void
     {
         $this->assertTrue($this->voter->exposeOnSitemap(new \stdClass(), 'some-sitemap'));
     }

@@ -42,7 +42,7 @@ class CmfSeoExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
@@ -106,11 +106,8 @@ class CmfSeoExtension extends Extension
 
     /**
      * Puts the seo parameters into the container.
-     *
-     * @param array            $config
-     * @param ContainerBuilder $container
      */
-    public function loadSeoParameters(array $config, ContainerBuilder $container)
+    public function loadSeoParameters(array $config, ContainerBuilder $container): void
     {
         $params = ['translation_domain', 'title', 'description', 'original_route_pattern'];
 
@@ -138,10 +135,8 @@ class CmfSeoExtension extends Extension
 
     /**
      * @param $config
-     * @param XmlFileLoader    $loader
-     * @param ContainerBuilder $container
      */
-    private function loadPhpcr($config, XmlFileLoader $loader, ContainerBuilder $container)
+    private function loadPhpcr($config, XmlFileLoader $loader, ContainerBuilder $container): void
     {
         $bundles = $container->getParameter('kernel.bundles');
         if (isset($bundles['CmfRoutingBundle'])) {
@@ -155,7 +150,7 @@ class CmfSeoExtension extends Extension
         $loader->load('phpcr-sitemap.xml');
     }
 
-    private function loadContentListener(array $config, XmlFileLoader $loader, ContainerBuilder $container)
+    private function loadContentListener(array $config, XmlFileLoader $loader, ContainerBuilder $container): void
     {
         $container->setParameter('cmf_seo.content_key', $config['content_key']);
 
@@ -169,9 +164,8 @@ class CmfSeoExtension extends Extension
      * When using phpcr-odm a default provider will be set, when choosing no own one.
      *
      * @param array            $config
-     * @param ContainerBuilder $container
      */
-    private function loadAlternateLocaleProvider($config, ContainerBuilder $container)
+    private function loadAlternateLocaleProvider($config, ContainerBuilder $container): void
     {
         $alternateLocaleProvider = null === $config['provider_id']
             ? $this->defaultAlternateLocaleProviderId
@@ -205,9 +199,8 @@ class CmfSeoExtension extends Extension
      * The providers are activated only, when phpcr is chosen as persistence.
      *
      * @param $config
-     * @param ContainerBuilder $container
      */
-    private function loadErrorHandling($config, ContainerBuilder $container)
+    private function loadErrorHandling($config, ContainerBuilder $container): void
     {
         foreach (['parent', 'sibling'] as $group) {
             $remove = isset($config['enable_'.$group.'_provider'])
@@ -237,7 +230,7 @@ class CmfSeoExtension extends Extension
         }
     }
 
-    private function createRequestMatcher(ContainerBuilder $container, $path = null, $host = null, $methods = null, $ips = null, array $attributes = [])
+    private function createRequestMatcher(ContainerBuilder $container, $path = null, $host = null, $methods = null, $ips = null, array $attributes = []): Reference
     {
         $arguments = [$path, $host, $methods, $ips, $attributes];
         $serialized = serialize($arguments);
@@ -257,11 +250,9 @@ class CmfSeoExtension extends Extension
 
     /**
      * @param array            $config
-     * @param XmlFileLoader    $loader
-     * @param ContainerBuilder $container
      * @param bool             $alternateLocale whether alternate locale handling is loaded
      */
-    private function loadSitemapHandling($config, XmlFileLoader $loader, ContainerBuilder $container, $alternateLocale)
+    private function loadSitemapHandling($config, XmlFileLoader $loader, ContainerBuilder $container, $alternateLocale): void
     {
         $loader->load('sitemap.xml');
 
@@ -332,9 +323,8 @@ class CmfSeoExtension extends Extension
      * Each helper type out of the guessers, loaders and voters hav its on configuration to enable/disable them.
      *
      * @param array            $helperStatus Map of type => id => list of sitemaps
-     * @param ContainerBuilder $container
      */
-    private function handleSitemapHelper($helperStatus, ContainerBuilder $container)
+    private function handleSitemapHelper($helperStatus, ContainerBuilder $container): void
     {
         foreach ($helperStatus as $type => $status) {
             foreach ($status as $id => $sitemaps) {
@@ -358,10 +348,9 @@ class CmfSeoExtension extends Extension
      * The data_class option form type for the SeoMetadata depends on the chose storage.
      *
      * @param array            $config
-     * @param ContainerBuilder $container
      * @param string           $storage   information about the configured storage
      */
-    private function loadFormConfiguration($config, ContainerBuilder $container, $storage)
+    private function loadFormConfiguration($config, ContainerBuilder $container, $storage): void
     {
         $seoMetadataClass = 'Symfony\Cmf\Bundle\SeoBundle\Model\SeoMetadata';
         if (null !== $config['data_class']['seo_metadata']) {

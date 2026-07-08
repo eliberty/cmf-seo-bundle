@@ -25,12 +25,10 @@ use Symfony\Cmf\Bundle\SeoBundle\Model\UrlInformation;
  */
 class LastModifiedGuesser implements GuesserInterface
 {
-    private \Doctrine\Persistence\ManagerRegistry $managerRegistry;
+    private ManagerRegistry $managerRegistry;
 
     /**
      * LastModifiedGuesser constructor.
-     *
-     * @param ManagerRegistry $manager
      */
     public function __construct(ManagerRegistry $manager)
     {
@@ -44,7 +42,7 @@ class LastModifiedGuesser implements GuesserInterface
      * @param object         $object         the sitemap element to get values from
      * @param string         $sitemap        name of the sitemap being built
      */
-    public function guessValues(UrlInformation $urlInformation, $object, $sitemap)
+    public function guessValues(UrlInformation $urlInformation, $object, $sitemap): void
     {
         if (null !== $urlInformation->getLastModification()) {
             return;

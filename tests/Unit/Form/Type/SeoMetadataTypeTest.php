@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
+use PHPUnit\Framework\MockObject\MockObject;
 use Burgov\Bundle\KeyValueFormBundle\Form\Type\KeyValueRowType;
 use Burgov\Bundle\KeyValueFormBundle\Form\Type\KeyValueType;
 use Symfony\Cmf\Bundle\SeoBundle\Doctrine\Phpcr\SeoMetadata;
@@ -25,7 +25,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class SeoMetadataTypeTest extends FormIntegrationTestCase
 {
-    private $validator;
+    private MockObject $validator;
 
     public function setUp()
     {
@@ -53,7 +53,7 @@ class SeoMetadataTypeTest extends FormIntegrationTestCase
         );
     }
 
-    public function testDataClassCreationForPhpcr()
+    public function testDataClassCreationForPhpcr(): void
     {
         $this->validator->expects($this->any())->method('validate')->will($this->returnValue([]));
 
@@ -82,7 +82,7 @@ class SeoMetadataTypeTest extends FormIntegrationTestCase
         $this->assertEquals($object, $form->getData());
     }
 
-    public function testDataClassCreationForNonPhpcr()
+    public function testDataClassCreationForNonPhpcr(): void
     {
         $this->validator->expects($this->any())->method('validate')->will($this->returnValue([]));
 

@@ -40,7 +40,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
 
     private $configValues;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->pageService = $this->createMock(SeoPage::class);
         $this->translator = $this->createMock(TranslatorInterface::class);
@@ -65,7 +65,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         ;
     }
 
-    public function testDefaultTitle()
+    public function testDefaultTitle(): void
     {
         // promises
         $this->seoMetadata
@@ -91,7 +91,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $this->seoPresentation->updateSeoPage($this->content);
     }
 
-    public function testContentTitle()
+    public function testContentTitle(): void
     {
         // promises
         $this->seoMetadata
@@ -112,7 +112,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $this->seoPresentation->updateSeoPage($this->content);
     }
 
-    public function testDefaultDescription()
+    public function testDefaultDescription(): void
     {
         // promises
         $this->seoMetadata
@@ -138,7 +138,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $this->seoPresentation->updateSeoPage($this->content);
     }
 
-    public function testContentDescription()
+    public function testContentDescription(): void
     {
         // promises
         $this->seoMetadata
@@ -159,7 +159,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $this->seoPresentation->updateSeoPage($this->content);
     }
 
-    public function testSettingKeywordsToSeoPage()
+    public function testSettingKeywordsToSeoPage(): void
     {
         // promises
         $this->seoMetadata
@@ -188,7 +188,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $this->seoPresentation->updateSeoPage($this->content);
     }
 
-    public function testExtractors()
+    public function testExtractors(): void
     {
         // promises
         $this->translator
@@ -215,7 +215,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $this->seoPresentation->updateSeoPage($this->content);
     }
 
-    public function testTitleExtractorsWithPriority()
+    public function testTitleExtractorsWithPriority(): void
     {
         // promises
         $this->translator
@@ -249,14 +249,14 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $extractorDefault
             ->expects($this->once())
             ->method('updateMetadata')
-            ->will($this->returnCallback(function ($content, SeoMetadataInterface $seoMetadata) {
+            ->will($this->returnCallback(function ($content, SeoMetadataInterface $seoMetadata): void {
                 $seoMetadata->setTitle('First Title');
             }))
         ;
         $extractorOne
             ->expects($this->once())
             ->method('updateMetadata')
-            ->will($this->returnCallback(function ($content, SeoMetadataInterface $seoMetadata) {
+            ->will($this->returnCallback(function ($content, SeoMetadataInterface $seoMetadata): void {
                 $seoMetadata->setTitle('Final Title');
             }))
         ;
@@ -265,7 +265,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $this->seoPresentation->updateSeoPage($this->content);
     }
 
-    public function testDescriptionExtractorsWithPriority()
+    public function testDescriptionExtractorsWithPriority(): void
     {
         $this->translator
             ->expects($this->any())
@@ -300,14 +300,14 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $extractorDefault
             ->expects($this->once())
             ->method('updateMetadata')
-            ->will($this->returnCallback(function ($content, SeoMetadataInterface $seoMetadata) {
+            ->will($this->returnCallback(function ($content, SeoMetadataInterface $seoMetadata): void {
                 $seoMetadata->setMetaDescription('First Description');
             }))
         ;
         $extractorOne
             ->expects($this->once())
             ->method('updateMetadata')
-            ->will($this->returnCallback(function ($content, SeoMetadataInterface $seoMetadata) {
+            ->will($this->returnCallback(function ($content, SeoMetadataInterface $seoMetadata): void {
                 $seoMetadata->setMetaDescription('Final Description');
             }))
         ;
@@ -321,7 +321,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         $this->seoPresentation->updateSeoPage($this->content);
     }
 
-    public function testRedirect()
+    public function testRedirect(): void
     {
         // promises
         $this->seoMetadata
@@ -416,7 +416,7 @@ class SeoPresentationTest extends \PHPUnit_Framework_Testcase
         return [$seoPresentation, $cache, $extractors];
     }
 
-    public function testSeoAwareWithoutCurrentMetadata()
+    public function testSeoAwareWithoutCurrentMetadata(): void
     {
         $content = $this->createMock(SeoAwareContent::class);
         $content

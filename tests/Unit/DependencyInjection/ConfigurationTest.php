@@ -35,7 +35,7 @@ class ConfigurationTest extends AbstractExtensionConfigurationTestCase
         return new Configuration();
     }
 
-    public function testDefaultsForAllConfigFormats()
+    public function testDefaultsForAllConfigFormats(): void
     {
         $expectedConfiguration = [
             'title' => 'default_title',
@@ -96,7 +96,7 @@ class ConfigurationTest extends AbstractExtensionConfigurationTestCase
         $this->assertProcessedConfigurationEquals($expectedConfiguration, $sources);
     }
 
-    public function testSitemapXmlConfigurations()
+    public function testSitemapXmlConfigurations(): void
     {
         $expectedConfiguration = [
             'sitemap' => [
@@ -164,7 +164,7 @@ class ConfigurationTest extends AbstractExtensionConfigurationTestCase
         $this->assertProcessedConfigurationEquals($expectedConfiguration, $sources);
     }
 
-    public function testErrorHandlingXmlConfigurations()
+    public function testErrorHandlingXmlConfigurations(): void
     {
         $expectedConfiguration = [
             'error' => [

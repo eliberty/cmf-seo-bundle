@@ -34,7 +34,6 @@ class ExtractorCollection implements \IteratorAggregate, \Serializable
     private $createdAt;
 
     /**
-     * @param array       $extractors
      * @param null|string $resource   The path to the file of the content object, this is
      *                                used to determine if the cache needs to be updated
      */
@@ -60,7 +59,7 @@ class ExtractorCollection implements \IteratorAggregate, \Serializable
      *
      * @return bool whether cache needs to be updated
      */
-    public function isFresh($timestamp = null)
+    public function isFresh($timestamp = null): bool
     {
         if (null === $timestamp) {
             $timestamp = $this->createdAt;
@@ -92,7 +91,7 @@ class ExtractorCollection implements \IteratorAggregate, \Serializable
     /**
      * {@inheritdoc}
      */
-    public function unserialize($data)
+    public function unserialize($data): void
     {
         list(
             $this->extractors,

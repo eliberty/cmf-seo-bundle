@@ -17,7 +17,7 @@ use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 
 class DescriptionExtractorTest extends BaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -26,7 +26,7 @@ class DescriptionExtractorTest extends BaseTestCase
         $this->metadataMethod = 'setMetaDescription';
     }
 
-    public function getSupportsData()
+    public function getSupportsData(): array
     {
         return [
             [$this->createMock(DescriptionReadInterface::class)],

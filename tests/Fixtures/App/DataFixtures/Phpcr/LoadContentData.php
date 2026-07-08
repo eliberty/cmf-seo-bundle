@@ -22,7 +22,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Tests\Fixtures\App\Document\SeoAwareContent;
 
 class LoadContentData implements FixtureInterface
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         NodeHelper::createPath($manager->getPhpcrSession(), '/test');
 

@@ -18,7 +18,7 @@ use Symfony\Cmf\Component\Testing\Functional\BaseTestCase;
 
 class SeoMetadataTest extends BaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         (new ORMPurger($this->getDbManager('ORM')->getOm()))->purge();
     }
@@ -35,7 +35,7 @@ class SeoMetadataTest extends BaseTestCase
         return $this->db('ORM')->getOm();
     }
 
-    public function testSeoMetadata()
+    public function testSeoMetadata(): void
     {
         $content = new SeoAwareOrmContent();
         $content

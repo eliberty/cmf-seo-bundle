@@ -200,7 +200,7 @@ class SeoMetadata implements SeoMetadataInterface
     /**
      * {@inheritdoc}
      */
-    public function addExtraProperty($key, $value)
+    public function addExtraProperty($key, $value): void
     {
         $this->extraProperties[$key] = (string) $value;
     }
@@ -208,7 +208,7 @@ class SeoMetadata implements SeoMetadataInterface
     /**
      * {@inheritdoc}
      */
-    public function removeExtraProperty($key)
+    public function removeExtraProperty($key): void
     {
         if (array_key_exists($key, $this->extraProperties)) {
             unset($this->extraProperties[$key]);
@@ -236,7 +236,7 @@ class SeoMetadata implements SeoMetadataInterface
     /**
      * {@inheritdoc}
      */
-    public function addExtraName($key, $value)
+    public function addExtraName($key, $value): void
     {
         $this->extraNames[$key] = (string) $value;
     }
@@ -244,7 +244,7 @@ class SeoMetadata implements SeoMetadataInterface
     /**
      * {@inheritdoc}
      */
-    public function removeExtraName($key)
+    public function removeExtraName($key): void
     {
         if (array_key_exists($key, $this->extraNames)) {
             unset($this->extraNames[$key]);
@@ -272,7 +272,7 @@ class SeoMetadata implements SeoMetadataInterface
     /**
      * {@inheritdoc}
      */
-    public function addExtraHttp($key, $value)
+    public function addExtraHttp($key, $value): void
     {
         $this->extraHttp[$key] = (string) $value;
     }
@@ -280,7 +280,7 @@ class SeoMetadata implements SeoMetadataInterface
     /**
      * {@inheritdoc}
      */
-    public function removeExtraHttp($key)
+    public function removeExtraHttp($key): void
     {
         if (array_key_exists($key, $this->extraHttp)) {
             unset($this->extraHttp[$key]);
@@ -296,7 +296,7 @@ class SeoMetadata implements SeoMetadataInterface
      *
      * @throws InvalidArgumentException if $data can not be converted to an array
      */
-    private function toArray($data)
+    private function toArray($data): array
     {
         if (is_array($data)) {
             return $data;

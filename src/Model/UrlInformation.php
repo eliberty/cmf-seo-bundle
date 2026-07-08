@@ -84,7 +84,7 @@ class UrlInformation
         return $this;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         $result = [
             'loc' => $this->location,
@@ -139,14 +139,12 @@ class UrlInformation
     /**
      * @return \DateTime
      */
-    public function getLastModification()
+    public function getLastModification(): ?string
     {
         return $this->lastModification;
     }
 
     /**
-     * @param \DateTime $dateTime
-     *
      * @return $this
      */
     public function setLastModification(\DateTime $dateTime)
@@ -238,8 +236,6 @@ class UrlInformation
     }
 
     /**
-     * @param AlternateLocale $alternateLocale
-     *
      * @return $this
      */
     public function addAlternateLocale(AlternateLocale $alternateLocale)
@@ -260,7 +256,7 @@ class UrlInformation
     /**
      * @param int|null $depth
      */
-    public function setDepth($depth)
+    public function setDepth($depth): void
     {
         $this->depth = $depth;
     }

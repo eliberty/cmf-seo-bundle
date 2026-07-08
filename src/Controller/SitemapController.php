@@ -11,6 +11,7 @@
 
 namespace Symfony\Cmf\Bundle\SeoBundle\Controller;
 
+use Twig\Environment;
 use Symfony\Cmf\Bundle\SeoBundle\Model\UrlInformation;
 use Symfony\Cmf\Bundle\SeoBundle\Sitemap\UrlInformationProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,7 +26,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class SitemapController
 {
     /**
-     * @var \Twig\Environment
+     * @var Environment
      */
     private $templating;
 
@@ -47,13 +48,11 @@ class SitemapController
      *
      * Json is serialized by default, but can be customized with a template
      *
-     * @param UrlInformationProvider $sitemapProvider
-     * @param \Twig\Environment $templating
      * @param array                  $configurations  list of available sitemap configurations
      */
     public function __construct(
         UrlInformationProvider $sitemapProvider,
-        \Twig\Environment $templating,
+        Environment $templating,
         array $configurations
     ) {
         $this->templating = $templating;
@@ -64,10 +63,8 @@ class SitemapController
     /**
      * @param string $_format the format of the sitemap
      * @param string $sitemap the sitemap to show
-     *
-     * @return Response
      */
-    public function indexAction($_format, $sitemap)
+    public function indexAction($_format, $sitemap): Response|JsonResponse
     {
         if (!isset($this->configurations[$sitemap])) {
             throw new NotFoundHttpException(sprintf('Unknown sitemap "%s"', $sitemap));
@@ -97,10 +94,8 @@ class SitemapController
 
     /**
      * @param array|UrlInformation[] $urls
-     *
-     * @return JsonResponse
      */
-    private function createJsonResponse($urls)
+    private function createJsonResponse($urls): JsonResponse
     {
         $result = [];
 

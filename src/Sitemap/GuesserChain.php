@@ -23,7 +23,7 @@ class GuesserChain extends AbstractChain
     /**
      * {@inheritdoc}.
      */
-    public function guessValues(UrlInformation $urlInformation, $object, $sitemap)
+    public function guessValues(UrlInformation $urlInformation, $object, $sitemap): void
     {
         /** @var $guesser GuesserInterface */
         foreach ($this->getSortedEntriesForSitemap($sitemap) as $guesser) {

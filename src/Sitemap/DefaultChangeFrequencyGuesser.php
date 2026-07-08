@@ -38,7 +38,7 @@ class DefaultChangeFrequencyGuesser implements GuesserInterface
     /**
      * {@inheritdoc}.
      */
-    public function guessValues(UrlInformation $urlInformation, $object, $sitemap)
+    public function guessValues(UrlInformation $urlInformation, $object, $sitemap): void
     {
         if ($urlInformation->getChangeFrequency()) {
             return;

@@ -50,7 +50,7 @@ class RegisterUrlInformationProviderPassTest extends AbstractCompilerPassTestCas
     /**
      * @dataProvider tagProvider
      */
-    public function testTags($tagName, $serviceName)
+    public function testTags($tagName, $serviceName): void
     {
         $taggedService = new Definition();
         $taggedService->addTag('cmf_seo.sitemap.'.$tagName);

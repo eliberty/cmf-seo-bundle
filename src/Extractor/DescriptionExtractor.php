@@ -34,7 +34,7 @@ class DescriptionExtractor implements ExtractorInterface
      *
      * @param DescriptionReadInterface $content
      */
-    public function updateMetadata($content, SeoMetadataInterface $seoMetadata)
+    public function updateMetadata($content, SeoMetadataInterface $seoMetadata): void
     {
         $seoMetadata->setMetaDescription($content->getSeoDescription());
     }

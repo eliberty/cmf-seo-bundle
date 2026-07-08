@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class LocationGuesserTest extends GuesserTestCase
 {
-    public function testGuessCreate()
+    public function testGuessCreate(): void
     {
         $urlInformation = parent::testGuessCreate();
         $this->assertEquals('http://symfony.com', $urlInformation->getLocation());
@@ -25,7 +25,7 @@ class LocationGuesserTest extends GuesserTestCase
     /**
      * {@inheritdoc}
      */
-    protected function createGuesser()
+    protected function createGuesser(): LocationGuesser
     {
         $urlGenerator = $this->createMock(UrlGeneratorInterface::class);
         $urlGenerator
@@ -49,7 +49,7 @@ class LocationGuesserTest extends GuesserTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getFields()
+    protected function getFields(): array
     {
         return ['Location'];
     }

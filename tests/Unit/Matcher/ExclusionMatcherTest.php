@@ -33,7 +33,7 @@ class ExclusionMatcherTest extends PHPUnit_Framework_TestCase
      */
     private $exclusionMatcher;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->matcherA = $this->createMock(RequestMatcherInterface::class);
         $this->matcherB = $this->createMock(RequestMatcherInterface::class);
@@ -43,14 +43,14 @@ class ExclusionMatcherTest extends PHPUnit_Framework_TestCase
         $this->exclusionMatcher->addRequestMatcher($this->matcherB);
     }
 
-    public function testReturnTrueMatcherAReturnsTrue()
+    public function testReturnTrueMatcherAReturnsTrue(): void
     {
         $this->matcherA->expects($this->once())->method('matches')->will($this->returnValue(true));
 
         $this->assertTrue($this->exclusionMatcher->matches(new Request()));
     }
 
-    public function testReturnTrueMatcherBReturnsTrue()
+    public function testReturnTrueMatcherBReturnsTrue(): void
     {
         $this->matcherA->expects($this->once())->method('matches')->will($this->returnValue(false));
         $this->matcherB->expects($this->once())->method('matches')->will($this->returnValue(true));
@@ -58,7 +58,7 @@ class ExclusionMatcherTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->exclusionMatcher->matches(new Request()));
     }
 
-    public function testReturnTrueBothReturningFalse()
+    public function testReturnTrueBothReturningFalse(): void
     {
         $this->matcherA->expects($this->once())->method('matches')->will($this->returnValue(false));
         $this->matcherB->expects($this->once())->method('matches')->will($this->returnValue(false));

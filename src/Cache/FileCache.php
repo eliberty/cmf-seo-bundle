@@ -60,7 +60,7 @@ class FileCache implements CacheInterface, CacheWarmerInterface, CacheClearerInt
     /**
      * {@inheritdoc}
      */
-    public function putExtractorsInCache($class, array $extractors)
+    public function putExtractorsInCache($class, array $extractors): void
     {
         $path = $this->dir.'/'.strtr($class, '\\', '-').'.cache.php';
 
@@ -84,7 +84,7 @@ class FileCache implements CacheInterface, CacheWarmerInterface, CacheClearerInt
      *
      * @author Johannes M. Schmitt <schmittjoh@gmail.com>
      */
-    private function renameFile($source, $target)
+    private function renameFile($source, $target): void
     {
         if (false === @rename($source, $target)) {
             if (defined('PHP_WINDOWS_VERSION_BUILD')) {
@@ -123,7 +123,7 @@ class FileCache implements CacheInterface, CacheWarmerInterface, CacheClearerInt
     /**
      * {@inheritdoc}
      */
-    public function clear($cacheDir)
+    public function clear($cacheDir): void
     {
         $filesystem = new Filesystem();
         if (is_dir($this->dir)) {

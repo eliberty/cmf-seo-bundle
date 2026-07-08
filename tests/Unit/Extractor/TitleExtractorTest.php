@@ -17,7 +17,7 @@ use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 
 class TitleExtractorTest extends BaseTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -26,7 +26,7 @@ class TitleExtractorTest extends BaseTestCase
         $this->metadataMethod = 'setTitle';
     }
 
-    public function getSupportsData()
+    public function getSupportsData(): array
     {
         return [
             [$this->createMock(TitleReadInterface::class)],

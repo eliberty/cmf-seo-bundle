@@ -38,7 +38,7 @@ class LastModifiedGuesserTest extends GuesserTestCase
      */
     private $metadata;
 
-    public function testGuessCreate()
+    public function testGuessCreate(): void
     {
         $urlInformation = parent::testGuessCreate();
         $this->assertEquals('2016-07-06T00:00:00+02:00', $urlInformation->getLastModification());
@@ -49,7 +49,7 @@ class LastModifiedGuesserTest extends GuesserTestCase
      *
      * @return GuesserInterface
      */
-    protected function createGuesser()
+    protected function createGuesser(): LastModifiedGuesser
     {
         $this->registry = $this->createMock(ManagerRegistry::class);
         $this->manager = $this->createMock(DocumentManager::class);
@@ -96,15 +96,13 @@ class LastModifiedGuesserTest extends GuesserTestCase
 
     /**
      * Provide list of fields in UrlInformation covered by this guesser.
-     *
-     * @return array
      */
-    protected function getFields()
+    protected function getFields(): array
     {
         return ['LastModification'];
     }
 
-    public function testGuessNoOverwrite()
+    public function testGuessNoOverwrite(): void
     {
         $urlInformation = new UrlInformation();
         $urlInformation->setLastModification(new \DateTime('2016-06-06', new \DateTimeZone('Europe/Berlin')));

@@ -22,11 +22,8 @@ use Symfony\Cmf\Bundle\SeoBundle\Sitemap\LoaderInterface;
  */
 class SitemapDocumentProvider implements LoaderInterface
 {
-    private \Doctrine\ODM\PHPCR\DocumentManager $manager;
+    private DocumentManager $manager;
 
-    /**
-     * @param DocumentManager $manager
-     */
     public function __construct(DocumentManager $manager)
     {
         $this->manager = $manager;

@@ -27,7 +27,7 @@ class UrlInformationProviderTest extends \PHPUnit_Framework_Testcase
      */
     private $provider;
 
-    public function setUp()
+    public function setUp(): void
     {
         $accepted = new TestModel('accepted');
         $refused = new TestModel('refused');
@@ -64,7 +64,7 @@ class UrlInformationProviderTest extends \PHPUnit_Framework_Testcase
                 $this->isInstanceOf(UrlInformation::class),
                 $this->equalTo($accepted),
                 $this->equalTo('default'))
-            ->will($this->returnCallback(function (UrlInformation $info) {
+            ->will($this->returnCallback(function (UrlInformation $info): void {
                 $info->setLocation('http://symfony.com');
             }))
         ;
@@ -72,7 +72,7 @@ class UrlInformationProviderTest extends \PHPUnit_Framework_Testcase
         $this->provider = new UrlInformationProvider($loader, $voter, $guesser);
     }
 
-    public function testProvider()
+    public function testProvider(): void
     {
         $urlInformations = $this->provider->getUrlInformation();
         $this->assertCount(1, $urlInformations);

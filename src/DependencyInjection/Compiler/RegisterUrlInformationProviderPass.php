@@ -33,7 +33,7 @@ class RegisterUrlInformationProviderPass implements CompilerPassInterface
      *
      * @throws LogicException if a tagged service is not public
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->hasParameter('cmf_seo.sitemap.configurations')) {
             return;
@@ -65,12 +65,11 @@ class RegisterUrlInformationProviderPass implements CompilerPassInterface
     /**
      * Add tagged services with priority and sitemap parameter.
      *
-     * @param ContainerBuilder $container
      * @param string           $service   ID of service to add tagged services to
      * @param string           $tag       Tag name
      * @param string[]         $sitemaps  list of valid sitemap names
      */
-    private function processTagsForService(ContainerBuilder $container, $service, $tag, array $sitemaps)
+    private function processTagsForService(ContainerBuilder $container, $service, $tag, array $sitemaps): void
     {
         $serviceDefinition = $container->getDefinition($service);
         $taggedServices = $container->findTaggedServiceIds($tag);

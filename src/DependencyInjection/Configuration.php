@@ -35,7 +35,7 @@ class Configuration implements ConfigurationInterface
         $nodeBuilder = $treeBuilder->getRootNode()
             ->addDefaultsIfNotSet()
             ->beforeNormalization()
-                ->ifTrue(fn($config) => isset($config['sitemap'])
+                ->ifTrue(fn($config): bool => isset($config['sitemap'])
                     && (!isset($config['sitemap']['configurations'])
                         || 0 === (is_countable($config['sitemap']['configurations']) ? count($config['sitemap']['configurations']) : 0)
                     )
@@ -56,7 +56,7 @@ class Configuration implements ConfigurationInterface
                 })
             ->end()
             ->beforeNormalization()
-                ->ifTrue(fn($config) => isset($config['content_key']) && !isset($config['content_listener']['content_key']))
+                ->ifTrue(fn($config): bool => isset($config['content_key']) && !isset($config['content_listener']['content_key']))
                 ->then(function ($config) {
                     $config['content_listener']['content_key'] = $config['content_key'];
                     unset($config['content_key']);
@@ -66,7 +66,7 @@ class Configuration implements ConfigurationInterface
             ->end()
             // validation needs to be on top, when no values are set a validation inside the content_listener array node will not be triggered
             ->validate()
-                ->ifTrue(fn($v) => $v['content_listener']['enabled'] && empty($v['content_listener']['content_key']))
+                ->ifTrue(fn($v): bool => $v['content_listener']['enabled'] && empty($v['content_listener']['content_key']))
                 ->thenInvalid('Configure the content_listener.content_key or disable the content_listener when not using the CmfRoutingBundle DynamicRouter.')
             ->end()
             ->children()
@@ -90,10 +90,8 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Attach the persistence node to the tree.
-     *
-     * @param NodeBuilder $treeBuilder
      */
-    private function addPersistenceSection(NodeBuilder $treeBuilder)
+    private function addPersistenceSection(NodeBuilder $treeBuilder): void
     {
         $treeBuilder
             ->arrayNode('persistence')
@@ -122,10 +120,8 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Attach the alternate locale node to the tree.
-     *
-     * @param NodeBuilder $nodeBuilder
      */
-    private function addAlternateLocaleSection(NodeBuilder $nodeBuilder)
+    private function addAlternateLocaleSection(NodeBuilder $nodeBuilder): void
     {
         $nodeBuilder
             ->arrayNode('alternate_locale')
@@ -140,10 +136,8 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Attach the error node to the tree.
-     *
-     * @param NodeBuilder $nodeBuilder
      */
-    private function addErrorHandlerSection(NodeBuilder $nodeBuilder)
+    private function addErrorHandlerSection(NodeBuilder $nodeBuilder): void
     {
         $nodeBuilder
             ->arrayNode('error')
@@ -177,10 +171,8 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Attach the sitemap node to the tree.
-     *
-     * @param NodeBuilder $nodeBuilder
      */
-    private function addSitemapSection(NodeBuilder $nodeBuilder)
+    private function addSitemapSection(NodeBuilder $nodeBuilder): void
     {
         $nodeBuilder
             ->arrayNode('sitemap')
@@ -232,13 +224,13 @@ class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function getSitemapHelperNode($type, $default)
+    private function getSitemapHelperNode($type, $default): ArrayNodeDefinition
     {
         $node = new ArrayNodeDefinition($type);
         $node
             ->beforeNormalization()
-                ->ifTrue(fn($config) => is_string($config))
-                ->then(fn($config) => [$config])
+                ->ifTrue(fn($config): bool => is_string($config))
+                ->then(fn($config): array => [$config])
             ->end()
             ->defaultValue($default)
             ->prototype('scalar')->end()
@@ -250,17 +242,15 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Attach the content listener node to the tree.
-     *
-     * @param NodeBuilder $nodeBuilder
      */
-    private function addContentListenerSection(NodeBuilder $nodeBuilder)
+    private function addContentListenerSection(NodeBuilder $nodeBuilder): void
     {
         $nodeBuilder
             ->arrayNode('content_listener')
                 ->canBeDisabled()
                 ->children()
                     ->scalarNode('content_key')
-                    ->defaultValue(class_exists(\Symfony\Cmf\Bundle\RoutingBundle\Routing\DynamicRouter::class) ? DynamicRouter::CONTENT_KEY : '')
+                    ->defaultValue(class_exists(DynamicRouter::class) ? DynamicRouter::CONTENT_KEY : '')
                 ->end()
             ->end()
         ;
@@ -271,7 +261,7 @@ class Configuration implements ConfigurationInterface
      *
      * @param NodeBuilder $nodeBuilder
      */
-    private function addFormSection($nodeBuilder)
+    private function addFormSection($nodeBuilder): void
     {
         $nodeBuilder
             ->arrayNode('form')

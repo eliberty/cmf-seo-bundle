@@ -24,7 +24,7 @@ class SitemapDocumentProviderTest extends BaseTestCase
      */
     private $documentProvider;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->db('PHPCR')->createTestNode();
         $this->dm = $this->db('PHPCR')->getOm();
@@ -36,7 +36,7 @@ class SitemapDocumentProviderTest extends BaseTestCase
         $this->documentProvider = new SitemapDocumentProvider($this->dm);
     }
 
-    public function testDocumentOrder()
+    public function testDocumentOrder(): void
     {
         $documents = $this->documentProvider->load('default');
 

@@ -55,7 +55,6 @@ class SuggestionProviderController extends ExceptionController
     private $exclusionRequestMatcher;
 
     /**
-     * @param Environment       $twig
      * @param bool                    $debug
      * @param RequestMatcherInterface $requestMatcher     The exclusion matcher to decider whether a route should be handled
      *                                                    by this error handling. It uses the defined exclusion_rules in the

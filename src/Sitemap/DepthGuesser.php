@@ -23,7 +23,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Model\UrlInformation;
  */
 class DepthGuesser implements GuesserInterface
 {
-    private \Doctrine\Bundle\PHPCRBundle\ManagerRegistry $managerRegistry;
+    private ManagerRegistry $managerRegistry;
 
     /**
      * @var int the depth of the content base path as the depth offset
@@ -33,7 +33,6 @@ class DepthGuesser implements GuesserInterface
     /**
      * DepthGuesser constructor.
      *
-     * @param ManagerRegistry $managerRegistry
      * @param $contentBasePath
      */
     public function __construct(ManagerRegistry $managerRegistry, $contentBasePath)
@@ -45,7 +44,7 @@ class DepthGuesser implements GuesserInterface
     /**
      * {@inheritdoc}
      */
-    public function guessValues(UrlInformation $urlInformation, $object, $sitemap)
+    public function guessValues(UrlInformation $urlInformation, $object, $sitemap): void
     {
         if (null !== $urlInformation->getDepth()) {
             return;

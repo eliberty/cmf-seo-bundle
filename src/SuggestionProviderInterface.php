@@ -28,7 +28,6 @@ interface SuggestionProviderInterface
      * Based on the current request this method creates a list
      * of suggestions as an array of routes.
      *
-     * @param Request $request
      *
      * @return array|Route[]
      */

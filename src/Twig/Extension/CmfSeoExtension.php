@@ -22,9 +22,6 @@ class CmfSeoExtension extends AbstractExtension
      */
     protected $seoPresentation;
 
-    /**
-     * @param SeoPresentationInterface $seoPresentation
-     */
     public function __construct(SeoPresentationInterface $seoPresentation)
     {
         $this->seoPresentation = $seoPresentation;
@@ -43,12 +40,12 @@ class CmfSeoExtension extends AbstractExtension
     /**
      * @see SeoPresentationInterface
      */
-    public function updateMetadata($content)
+    public function updateMetadata($content): void
     {
         $this->seoPresentation->updateSeoPage($content);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'cmf_seo';
     }

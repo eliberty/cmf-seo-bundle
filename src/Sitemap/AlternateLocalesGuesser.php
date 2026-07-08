@@ -21,7 +21,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Model\UrlInformation;
  */
 class AlternateLocalesGuesser implements GuesserInterface
 {
-    private \Symfony\Cmf\Bundle\SeoBundle\AlternateLocaleProviderInterface $alternateLocaleProvider;
+    private AlternateLocaleProviderInterface $alternateLocaleProvider;
 
     public function __construct(AlternateLocaleProviderInterface $alternateLocaleProvider)
     {
@@ -31,7 +31,7 @@ class AlternateLocalesGuesser implements GuesserInterface
     /**
      * {@inheritdoc}.
      */
-    public function guessValues(UrlInformation $urlInformation, $object, $sitemap)
+    public function guessValues(UrlInformation $urlInformation, $object, $sitemap): void
     {
         if ($urlInformation->getAlternateLocales()) {
             return;

@@ -24,7 +24,7 @@ class RegisterExtractorsPassTest extends AbstractCompilerPassTestCase
         $container->addCompilerPass(new RegisterExtractorsPass());
     }
 
-    public function testRegistersServicesWithExtractorTagAndDefaultPriority()
+    public function testRegistersServicesWithExtractorTagAndDefaultPriority(): void
     {
         $nonExtractorService = new Definition();
         $this->setDefinition('some_service', $nonExtractorService);
@@ -45,7 +45,7 @@ class RegisterExtractorsPassTest extends AbstractCompilerPassTestCase
         );
     }
 
-    public function testRegistersServicesWithExtractorTagAndPriority()
+    public function testRegistersServicesWithExtractorTagAndPriority(): void
     {
         $nonExtractorService = new Definition();
         $this->setDefinition('some_service', $nonExtractorService);

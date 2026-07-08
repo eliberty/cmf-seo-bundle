@@ -18,7 +18,7 @@ class ConfigValuesTest extends \PHPUnit_Framework_Testcase
     /**
      * @expectedException \Symfony\Cmf\Bundle\SeoBundle\Exception\ExtractorStrategyException
      */
-    public function testInvalidStrategy()
+    public function testInvalidStrategy(): void
     {
         $configValues = new ConfigValues();
         $configValues->setOriginalUrlBehaviour('nonexistent');

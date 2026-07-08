@@ -57,7 +57,7 @@ class ConfigValues
     /**
      * @param string $description
      */
-    public function setDescription($description)
+    public function setDescription($description): void
     {
         $this->description = $description;
     }
@@ -75,7 +75,7 @@ class ConfigValues
      *
      * @throws ExtractorStrategyException if $behaviour is not supported
      */
-    public function setOriginalUrlBehaviour($behaviour)
+    public function setOriginalUrlBehaviour($behaviour): void
     {
         if (!in_array($behaviour, SeoPresentation::$originalUrlBehaviours)) {
             throw new ExtractorStrategyException(
@@ -96,7 +96,7 @@ class ConfigValues
     /**
      * @param string $title
      */
-    public function setTitle($title)
+    public function setTitle($title): void
     {
         $this->title = $title;
     }
@@ -112,7 +112,7 @@ class ConfigValues
     /**
      * @param string $translationDomain
      */
-    public function setTranslationDomain($translationDomain)
+    public function setTranslationDomain($translationDomain): void
     {
         $this->translationDomain = $translationDomain;
     }

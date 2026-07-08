@@ -21,12 +21,12 @@ class AbstractChainTest extends \PHPUnit_Framework_Testcase
     /** @var TestChain */
     private $chain;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->chain = new TestChain();
     }
 
-    public function testAllChains()
+    public function testAllChains(): void
     {
         $one = new TestEntry('info-one');
         $two = new TestEntry('info-two');
@@ -39,7 +39,7 @@ class AbstractChainTest extends \PHPUnit_Framework_Testcase
         $this->assertEquals($expectedList, $this->chain->getValues('test'));
     }
 
-    public function testSpecificChain()
+    public function testSpecificChain(): void
     {
         $one = new TestEntry('info-one');
         $two = new TestEntry('info-two');
@@ -52,7 +52,7 @@ class AbstractChainTest extends \PHPUnit_Framework_Testcase
         $this->assertEquals($expectedList, $this->chain->getValues('test'));
     }
 
-    public function testPrioritisedInput()
+    public function testPrioritisedInput(): void
     {
         $first = new TestEntry('info-first');
         $earlySpecific = new TestEntry('info-early-specific');
@@ -80,7 +80,10 @@ class AbstractChainTest extends \PHPUnit_Framework_Testcase
 
 class TestChain extends AbstractChain
 {
-    public function getValues($sitemap)
+    /**
+     * @return mixed[]
+     */
+    public function getValues($sitemap): array
     {
         $values = [];
         /** @var $entry TestEntry */
